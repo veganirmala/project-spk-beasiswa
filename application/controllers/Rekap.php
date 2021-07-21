@@ -3,12 +3,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Rekap extends CI_Controller
 {
-    // private $nilai = [];
-    // private $nim = 0;
-    // private $ipk = 0;
-    // private $pribadi = 0;
-    // private $prestasi = 0;
-    // private $ekonomi = 0;
+    private $mahasiswa = [];
     public function __construct()
     {
         parent::__construct();
@@ -239,19 +234,21 @@ class Rekap extends CI_Controller
 
             $datamahasiswa = $this->Rekap_model->getDataMhs();
             /* Metode SAW
-                1. Ambil data mahasiswa dari db yang akan di sinkronisasi 
-                2. Masukkan data mahasiswa ke dalam array dengan nama $datamhs
+                1. Ambil data mahasiswa dari db yang akan di sinkronisasi !!DONE!!
+                2. Masukkan data mahasiswa ke dalam array dengan nama $mahasiswa !!DONE!!
                 3. Setelah itu
             */
             foreach ($datamahasiswa as $datamhs) {
-                //ngambil data nilai mhs
-                $nim = $datamhs['nim'];
-                $ipk = $datamhs['ipk'];
-                $pribadi = $datamhs['nilai_pribadi'];
-                $prestasi = $datamhs['nilai_prestasi'];
-                $ekonomi = $datamhs['ortu_penghasilan'];
+                $this->mahasiswa = [
+                    $datamhs['nim'],
+                    intval($datamhs['ipk']),
+                    intval($datamhs['nilai_pribadi']),
+                    intval($datamhs['nilai_prestasi']),
+                    intval($datamhs['ortu_penghasilan'])
+                ]; //ini adalah array mahasiswa
+                echo json_encode($this->mahasiswa) . "<br>";
             }
-            $mahasiswa = [$nim, $ipk, $pribadi, $prestasi, $ekonomi]; //ini adalah array mahasiswa
+            var_dump($this->mahasiswa);
         }
     }
 
