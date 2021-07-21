@@ -248,7 +248,6 @@ class Rekap extends CI_Controller
                 ]; //ini adalah array mahasiswa
                 echo json_encode($this->mahasiswa) . "<br>";
             }
-            var_dump($this->mahasiswa);
         }
     }
 
