@@ -58,7 +58,6 @@ class Rekap extends CI_Controller
             $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
             $datamahasiswa = $this->Rekap_model->getDataMhs();
-            //var_dump($datamahasiswa);
 
             if ($datamahasiswa <> null) {
                 foreach ($datamahasiswa as $datamhs) {
@@ -239,44 +238,20 @@ class Rekap extends CI_Controller
             $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
             $datamahasiswa = $this->Rekap_model->getDataMhs();
-            //var_dump($datamahasiswa);
-
             /* Metode SAW
                 1. Ambil data mahasiswa dari db yang akan di sinkronisasi 
                 2. Masukkan data mahasiswa ke dalam array dengan nama $datamhs
                 3. Setelah itu
             */
-            if ($datamahasiswa <> null) {
-                // foreach ($datamahasiswa as $datamhs) {
-                //     //ngambil data nilai mhs
-                //     $this->nim = $datamhs['nim'];
-                //     $this->ipk = $datamhs['ipk'];
-                //     $this->pribadi = $datamhs['nilai_pribadi'];
-                //     $this->prestasi = $datamhs['nilai_prestasi'];
-                //     $this->ekonomi = $datamhs['ortu_penghasilan'];
-                // }
-                // echo json_encode($datamahasiswa[2]['nim']);
-
-                echo json_encode($datamahasiswa[2]['nilai_pribadi']);
-                for ($i = 0; $i < count($datamahasiswa); $i++) { //banyak mahasiswa
-                    $datamhs[$i] = [];
-                    for ($j = 0; $j < 5; $j++) { //banyak isi data tiap mahasiswa
-                        if ($j = 0) {
-                            $j = 'nim';
-                        } elseif ($j = 1) {
-                            $j = 'ipk';
-                        } elseif ($j = 2) {
-                            $j = 'nilai_pribadi';
-                        } elseif ($j = 3) {
-                            $j = 'nilai_prestasi';
-                        } elseif ($j = 4) {
-                            $j = 'ortu_penghasilan';
-                        }
-                        $datamhs[$i][$j] = $datamahasiswa[$i][$j];
-                    }
-                }
-                echo json_encode($datamhs);
+            foreach ($datamahasiswa as $datamhs) {
+                //ngambil data nilai mhs
+                $nim = $datamhs['nim'];
+                $ipk = $datamhs['ipk'];
+                $pribadi = $datamhs['nilai_pribadi'];
+                $prestasi = $datamhs['nilai_prestasi'];
+                $ekonomi = $datamhs['ortu_penghasilan'];
             }
+            $mahasiswa = [$nim, $ipk, $pribadi, $prestasi, $ekonomi]; //ini adalah array mahasiswa
         }
     }
 
