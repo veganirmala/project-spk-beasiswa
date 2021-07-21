@@ -6,6 +6,7 @@ class Thusulan extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Thusulan_model');
     }
 
@@ -13,7 +14,7 @@ class Thusulan extends CI_Controller
     public function usulan()
     {
         if ($this->session->userdata('email')) {
-            $data['title'] = "Data Tahun Usulan Beasiswa";
+            $data['title'] = "Data Tahun Usulan";
             $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
             $data['usulan'] = $this->Thusulan_model->getUsulan();
@@ -47,6 +48,7 @@ class Thusulan extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Thusulan_model->addUsulan();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Tahun Usulan Berhasil ditambahkan!</div>');
                 redirect('thusulan/usulan');
             }
         } else {
@@ -74,6 +76,7 @@ class Thusulan extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Thusulan_model->updateUsulan();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Tahun Usulan Berhasil diubah!</div>');
                 redirect('thusulan/usulan');
             }
         } else {
@@ -84,6 +87,7 @@ class Thusulan extends CI_Controller
     public function usulan_delete($id)
     {
         $this->Thusulan_model->deleteUsulan($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Tahun Usulan Berhasil dihapus!</div>');
         redirect('thusulan/usulan');
     }
 

@@ -16,7 +16,7 @@
             </div>
         </div>
     </div>
-    <button type="button" value="Kembali" onClick="history.go(-1)" class="btn btn-success btn-user">
+    <button type="button" value="Kembali" onClick="history.go(-1)" class="btn btn-primary btn-user">
         Kembali
     </button>
 </div>

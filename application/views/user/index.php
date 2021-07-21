@@ -50,8 +50,8 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
-                                            <th>Email User</th>
+                                            <th>No</th>
+                                            <th>E-mail User</th>
                                             <th>Nama User</th>
                                             <th>Jenis Kelamin</th>
                                             <th>Tipe</th>

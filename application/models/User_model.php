@@ -27,13 +27,19 @@ class User_model extends CI_Model
 
     public function addUser()
     {
+        $email = $this->input->post('email', true);
+        $nama = $this->input->post('nama', true);
+        $jk_user = $this->input->post('jk_user', true);
+        $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+        $tipe = $this->input->post('tipe', true);
+        $status = $this->input->post('status', true);
         $data = [
-            'email' => $this->input->post('email'),
-            'nama' => $this->input->post('nama'),
-            'jk_user' => $this->input->post('jk_user'),
-            'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-            'tipe' => $this->input->post('tipe'),
-            'status' => $this->input->post('status')
+            'email' => $email,
+            'nama' => $nama,
+            'jk_user' => $jk_user,
+            'password' => $password,
+            'tipe' => $tipe,
+            'status' => $status
         ];
         $this->db->insert('tb_user', $data);
     }

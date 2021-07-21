@@ -6,6 +6,7 @@ class Fakultas extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Fakultas_model');
     }
 
@@ -15,16 +16,15 @@ class Fakultas extends CI_Controller
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Fakultas";
             $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-    
+
             $data['fakultas'] = $this->Fakultas_model->getFakultas();
-    
+
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
             $this->load->view('template/topbar', $data);
             $this->load->view('fakultas/index', $data);
             $this->load->view('template/footer');
-        }
-        else{
+        } else {
             redirect('auth');
         }
     }
@@ -46,6 +46,7 @@ class Fakultas extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Fakultas_model->addFakultas();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Fakultas Berhasil ditambahkan!</div>');
                 redirect('fakultas/fakultas');
             }
         } else {
@@ -72,6 +73,7 @@ class Fakultas extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Fakultas_model->updateFakultas();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Fakultas Berhasil diubah!</div>');
                 redirect('fakultas/fakultas');
             }
         } else {
@@ -83,6 +85,7 @@ class Fakultas extends CI_Controller
     public function fakultas_delete($id)
     {
         $this->Fakultas_model->deleteFakultas($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Fakultas Berhasil dihapus!</div>');
         redirect('fakultas/fakultas');
     }
 

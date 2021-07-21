@@ -7,6 +7,7 @@ class Kepribadian extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Kepribadian_model');
         $this->load->model('Thusulan_model');
     }
@@ -34,7 +35,8 @@ class Kepribadian extends CI_Controller
     public function kepribadian_tambah()
     {
         if ($this->session->userdata('email')) {
-            $this->form_validation->set_rules('nim', 'NIm', 'required');
+            $this->form_validation->set_rules('nim', 'NIM', 'required');
+            $this->form_validation->set_rules('id_usulan', 'Tahun Usulan', 'required');
             $this->form_validation->set_rules('nilai_pribadi', 'Nilai Kepribadian', 'required');
             $this->form_validation->set_rules('ipk', 'IPK', 'required');
             if ($this->form_validation->run() == false) {
@@ -50,6 +52,7 @@ class Kepribadian extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Kepribadian_model->addKepribadian();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Kepribadian Berhasil ditambahkan!</div>');
                 redirect('kepribadian/kepribadian');
             }
         } else {
@@ -61,7 +64,8 @@ class Kepribadian extends CI_Controller
     public function kepribadian_edit($id)
     {
         if ($this->session->userdata('email')) {
-            $this->form_validation->set_rules('nim', 'NIm', 'required');
+            $this->form_validation->set_rules('nim', 'NIM', 'required');
+            $this->form_validation->set_rules('id_usulan', 'Tahun Usulan', 'required');
             $this->form_validation->set_rules('nilai_pribadi', 'Nilai Kepribadian', 'required');
             $this->form_validation->set_rules('ipk', 'IPK', 'required');
             if ($this->form_validation->run() == false) {
@@ -79,6 +83,7 @@ class Kepribadian extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Kepribadian_model->updateKepribadian();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Kepribadian Berhasil diubah!</div>');
                 redirect('kepribadian/kepribadian');
             }
         } else {
@@ -89,6 +94,7 @@ class Kepribadian extends CI_Controller
     public function kepribadian_delete($id)
     {
         $this->Kepribadian_model->deleteKepribadian($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Kepribadian Berhasil dihapus!</div>');
         redirect('kepribadian/kepribadian');
     }
 

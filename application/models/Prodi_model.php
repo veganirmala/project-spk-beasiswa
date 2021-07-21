@@ -20,11 +20,15 @@ class Prodi_model extends CI_Model
 
     public function addProdi()
     {
+        $id_jurusan = $this->input->post('id_jurusan');
+        $nama_prodi = $this->input->post('nama_prodi');
+        $jenjang = $this->input->post('jenjang');
+        $ket_prodi = $this->input->post('ket_prodi');
         $data = [
-            'id_jurusan' => $this->input->post('id_jurusan'),
-            'nama_prodi' => $this->input->post('nama_prodi'),
-            'jenjang' => $this->input->post('jenjang'),
-            'ket_prodi' => $this->input->post('ket_prodi')
+            'id_jurusan' => $id_jurusan,
+            'nama_prodi' => $nama_prodi,
+            'jenjang' => $jenjang,
+            'ket_prodi' => $ket_prodi
         ];
 
         $this->db->insert('tb_prodi', $data);
@@ -42,14 +46,19 @@ class Prodi_model extends CI_Model
 
     public function updateProdi()
     {
+        $id_prodi = $this->input->post('id_prodi');
+        $id_jurusan = $this->input->post('id_jurusan');
+        $nama_prodi = $this->input->post('nama_prodi');
+        $jenjang = $this->input->post('jenjang');
+        $ket_prodi = $this->input->post('ket_prodi');
         $data = [
-            'id_jurusan' => $this->input->post('id_jurusan'),
-            'nama_prodi' => $this->input->post('nama_prodi'),
-            'jenjang' => $this->input->post('jenjang'),
-            'ket_prodi' => $this->input->post('ket_prodi')
+            'id_jurusan' => $id_jurusan,
+            'nama_prodi' => $nama_prodi,
+            'jenjang' => $jenjang,
+            'ket_prodi' => $ket_prodi
         ];
 
-        $this->db->where('id_prodi', $this->input->post('id_prodi'));
+        $this->db->where('id_prodi', $id_prodi);
         $this->db->update('tb_prodi', $data);
     }
 

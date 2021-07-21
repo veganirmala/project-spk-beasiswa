@@ -20,10 +20,14 @@ class Jurusan_model extends CI_Model
 
     public function addJurusan()
     {
+        $id_fakultas = $this->input->post('id_fakultas');
+        $nama_jurusan = $this->input->post('nama_jurusan');
+        $ket_jurusan = $this->input->post('ket_jurusan');
+
         $data = [
-            'id_fakultas' => $this->input->post('id_fakultas'),
-            'nama_jurusan' => $this->input->post('nama_jurusan'),
-            'ket_jurusan' => $this->input->post('ket_jurusan')
+            'id_fakultas' => $id_fakultas,
+            'nama_jurusan' => $nama_jurusan,
+            'ket_jurusan' => $ket_jurusan
         ];
         $this->db->insert('tb_jurusan', $data);
     }
@@ -40,12 +44,17 @@ class Jurusan_model extends CI_Model
 
     public function updateJurusan()
     {
+        $id_jurusan = $this->input->post('id_jurusan');
+        $id_fakultas = $this->input->post('id_fakultas');
+        $nama_jurusan = $this->input->post('nama_jurusan');
+        $ket_jurusan = $this->input->post('ket_jurusan');
+
         $data = [
-            'id_fakultas' => $this->input->post('id_fakultas'),
-            'nama_jurusan' => $this->input->post('nama_jurusan'),
-            'ket_jurusan' => $this->input->post('ket_jurusan')
+            'id_fakultas' => $id_fakultas,
+            'nama_jurusan' => $nama_jurusan,
+            'ket_jurusan' => $ket_jurusan
         ];
-        $this->db->where('id_jurusan', $this->input->post('id_jurusan'));
+        $this->db->where('id_jurusan', $id_jurusan);
         $this->db->update('tb_jurusan', $data);
     }
 

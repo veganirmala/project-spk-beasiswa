@@ -41,25 +41,27 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 <body class="bg-light">
     <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
-        <a class="navbar-brand mr-auto mr-lg-0" href="#">SPK-BEASISWA</a>
-        <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+        <div class="container">
+            <a class="navbar-brand mr-auto mr-lg-0" href="">SPK-BEASISWA</a>
+            <button class="navbar-toggler p-0 border-0" type="button" data-toggle="offcanvas">
+                Menu
+                <i class="fas fa-bars"></i>
+            </button>
 
-        <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="<?= base_url() . 'aksesuser'; ?>">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="#">Tentang Sistem</a>
-                </li>
-
-            </ul>
-            <form action="<?php echo base_url() . 'aksesuser/cari_mhs'; ?>" class="form-inline my-2 my-lg-0" method="post">
-                <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mhs">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari Mahasiswa</button>
-            </form>
+            <div class="navbar-collapse offcanvas-collapse" id="navbarsExampleDefault">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="<?= base_url() . 'aksesuser'; ?>">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= base_url() . 'auth'; ?>">Login Admin</a>
+                    </li>
+                </ul>
+                <form action="<?php echo base_url() . 'aksesuser/cari_mhs'; ?>" class="form-inline my-2 my-lg-0" method="post">
+                    <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" name="mhs">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cari Mahasiswa</button>
+                </form>
+            </div>
         </div>
     </nav>
 
@@ -100,11 +102,11 @@ defined('BASEPATH') or exit('No direct script access allowed');
             $no = 1;
             foreach ($rekap as $rek) { ?>
                 <div class="media text-muted pt-3">
-                    <button type="button" class="btn btn-primary mr-3" width="30"><?= $no++; ?></button>
+                    <button type="button" class="btn btn-primary mr-3"><?= $no++; ?></button>
                     <p class="media-body pb-3 mb-0  lh-125 border-bottom border-gray">
-                        <strong class="d-block text-gray-dark"><?= $rek['nim'] . " " . $rek['nama']; ?></strong>
-                        <?= $rek['tahun'] . " - " . $rek['id_beasiswa'] . " - " . $rek['nama_jurusan'] . " - " . $rek['nama_prodi'] . " - Skor Akhir= " . $rek['skor_total'] . " - "; ?>
-                        <strong><?= "Status: " . $rek['ket_rekap']; ?></strong>
+                        <strong class="d-block text-gray-dark"><?= $rek['nim'] . " " . $rek['nama_mhs']; ?></strong>
+                        <?= $rek['tahun'] . " - " . "  Skor Akhir= " . $rek['skor_total'] . " - "; ?>
+                        <strong><?= "Status: " . $rek['status']; ?></strong>
 
                     </p>
                 </div>

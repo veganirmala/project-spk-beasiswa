@@ -26,26 +26,37 @@ class PrestasiBidang_model extends CI_Model
 
     public function addBidang()
     {
+        $nama_bidang = $this->input->post('nama_bidang');
+        $tingkat = $this->input->post('tingkat');
+        $juara = $this->input->post('juara');
+        $skor = $this->input->post('skor');
+        $status_bidang = $this->input->post('status_bidang');
         $data = [
-            'nama_bidang' => $this->input->post('nama_bidang'),
-            'tingkat' => $this->input->post('tingkat'),
-            'juara' => $this->input->post('juara'),
-            'skor' => $this->input->post('skor'),
-            'status_bidang' => $this->input->post('status_bidang')
+            'nama_bidang' => $nama_bidang,
+            'tingkat' => $tingkat,
+            'juara' => $juara,
+            'skor' => $skor,
+            'status_bidang' => $status_bidang
         ];
         $this->db->insert('tb_prestasi_bidang', $data);
     }
 
     public function updateBidang()
     {
+        $id_bidang = $this->input->post('id_bidang');
+        $nama_bidang = $this->input->post('nama_bidang');
+        $tingkat = $this->input->post('tingkat');
+        $juara = $this->input->post('juara');
+        $skor = $this->input->post('skor');
+        $status_bidang = $this->input->post('status_bidang');
         $data = [
-            'nama_bidang' => $this->input->post('nama_bidang'),
-            'tingkat' => $this->input->post('tingkat'),
-            'juara' => $this->input->post('juara'),
-            'skor' => $this->input->post('skor'),
-            'status_bidang' => $this->input->post('status_bidang')
+            'nama_bidang' => $nama_bidang,
+            'tingkat' => $tingkat,
+            'juara' => $juara,
+            'skor' => $skor,
+            'status_bidang' => $status_bidang
         ];
-        $this->db->where('id_bidang', $this->input->post('id_bidang'));
+        $this->db->where('id_bidang', $id_bidang);
         $this->db->update('tb_prestasi_bidang', $data);
     }
 

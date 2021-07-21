@@ -43,7 +43,7 @@
                         <div class="card-header py-3">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
                             <a href="<?= base_url('rekap/rekap_sinkron'); ?>" class="btn btn-primary" title="Sinkronisasi Data"><i class="fas fa-spinner"> Sinkronisasi</i></a>
-                            <a href="<?= base_url('rekap/rekap_cetak'); ?>" class="btn btn-success" title="Cetak Data"><i class="fas fa-file-download"> Cetak</i></a>
+                            <a href="<?= base_url('rekap/cetak_rekap'); ?>" class="btn btn-info" title="Cetak Data"><i class="fas fa-file-download"> Cetak</i></a>
                             <?php echo $this->session->flashdata('message'); ?>
                         </div>
                         <div class="card-body">
@@ -51,12 +51,12 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>No</th>
                                             <th>NIM</th>
                                             <th>Skor IPK</th>
+                                            <th>Skor Pribadi</th>
                                             <th>Skor Prestasi</th>
                                             <th>Skor Ekonomi</th>
-                                            <th>Skor Pribadi</th>
                                             <th>Skor Total</th>
                                             <th>Status</th>
                                         </tr>
@@ -73,9 +73,9 @@
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $rkp['nim']; ?></td>
                                                 <td><?= $rkp['skor_ip']; ?></td>
+                                                <td><?= $rkp['skor_pribadi']; ?></td>
                                                 <td><?= $rkp['skor_prestasi']; ?></td>
                                                 <td><?= $rkp['skor_ekonomi']; ?></td>
-                                                <td><?= $rkp['skor_pribadi']; ?></td>
                                                 <td><?= $rkp['skor_total']; ?></td>
                                                 <td><?= $rkp['status']; ?></td>
                                             </tr>

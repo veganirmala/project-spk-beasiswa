@@ -13,7 +13,7 @@ class Prestasi_model extends CI_Model
         $query = "SELECT * FROM tb_prestasi INNER JOIN tb_tahun_usulan
                 ON tb_tahun_usulan.id_usulan = tb_prestasi.id_usulan
                 INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_prestasi.nim
-                ORDER BY id_prestasi ASC";
+                ORDER BY tb_mahasiswa.nim ASC";
         return $this->db->query($query)->result_array();
     }
 
@@ -29,12 +29,12 @@ class Prestasi_model extends CI_Model
 
     public function addPrestasi()
     {
-        $id = $this->input->post('id_usulan');
+        $id_usulan = $this->input->post('id_usulan');
         $nim = $this->input->post('nim');
         $nilaiprestasi = $this->input->post('nilai_prestasi');
         $data = [
             'nim' => $nim,
-            'id_usulan' => $id,
+            'id_usulan' => $id_usulan,
             'nilai_prestasi' => $nilaiprestasi
         ];
         $this->db->insert('tb_prestasi', $data);
@@ -42,12 +42,15 @@ class Prestasi_model extends CI_Model
 
     public function updatePrestasi()
     {
-        $id = $this->input->post('id_prestasi');
+        $id_prestasi = $this->input->post('id_prestasi');
+        $id_usulan = $this->input->post('id_usulan');
+        $nilaiprestasi = $this->input->post('nilai_prestasi');
         $data = [
 
-            'nilai_prestasi' => $this->input->post('nilai_prestasi')
+            'id_usulan' => $id_usulan,
+            'nilai_prestasi' => $nilaiprestasi
         ];
-        $this->db->where('id_prestasi', $id);
+        $this->db->where('id_prestasi', $id_prestasi);
         $this->db->update('tb_prestasi', $data);
     }
 

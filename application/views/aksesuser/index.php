@@ -32,6 +32,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
         @media (min-width: 768px) {
             .bd-placeholder-img-lg {
                 font-size: 3.5rem;
+                width: auto;
             }
         }
     </style>
@@ -68,47 +69,17 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 
     <main role="main" class="container">
-        <!-- <div class="my-3 p-3 bg-white rounded shadow-sm">
-
-            <div class="input-group">
-                <form action="<?php echo base_url() . 'aksesuser/cari_tahun'; ?>" class="form-inline my-2 my-lg-0" method="post">
-                    <select name="th" class="custom-select mr-1" id="inputGroupSelect04" aria-label="Example select with button addon">
-                        <option selected>Pilih Tahun Usulan</option>
-                        <?php foreach ($th_aktif as $th) { ?>
-                            <option value="<?= $th['tahun']; ?>"><?= $th['tahun']; ?></option>
-
-                        <?php } ?>
-                    </select>
-                    <div class="input-group">
-                        <button class="btn btn-secondary" type="submit">Cari</button>
-                    </div>
-                </form>
-                <form action="<?php echo base_url() . 'aksesuser/cari_status'; ?>" class="form-inline my-2 my-lg-0" method="post">
-                    <select name="status" class="custom-select ml-5 mr-1" id="inputGroupSelect04" aria-label="Example select with button addon">
-                        <option selected>Pilih Status Usulan</option>
-                        <option value="Draf">Draf</option>
-                        <option value="Diusulkan">Diusulkan</option>
-                        <option value="Tidak Diusulkan">Tidak Diusulkan</option>
-
-                    </select>
-                    <div class="input-group">
-                        <button class="btn btn-secondary" type="submit">Cari</button>
-                    </div>
-                </form>
-            </div>
-        </div> -->
         <div class="my-3 p-3 bg-white rounded shadow-sm">
             <h6 class="border-bottom border-gray pb-2 mb-0">Rekap Hasil Rekomendasi Seleksi Beasiswa</h6>
-
             <!-- <?php
                     $no = 1;
                     foreach ($rekap as $rek) { ?>
                 <div class="media text-muted pt-3">
                     <button type="button" class="btn btn-primary mr-3"><?= $no++; ?></button>
                     <p class="media-body pb-3 mb-0  lh-125 border-bottom border-gray">
-                        <strong class="d-block text-gray-dark"><?= $rek['nim'] . " " . $rek['nama']; ?></strong>
-                        <?= $rek['tahun'] . " - " . $rek['id_beasiswa'] . " - " . $rek['nama_jurusan'] . " - " . $rek['nama_prodi'] . " - Skor Akhir= " . $rek['skor_total'] . " - "; ?>
-                        <strong><?= "Status: " . $rek['ket_rekap']; ?></strong>
+                        <strong class="d-block text-gray-dark"><?= $rek['nim'] . " " . $rek['nama_mhs']; ?></strong>
+                        <?= $rek['tahun'] . " - " . "  Skor Akhir= " . $rek['skor_total'] . " - "; ?>
+                        <strong><?= "Status: " . $rek['status']; ?></strong>
 
                     </p>
                 </div>
@@ -118,8 +89,6 @@ defined('BASEPATH') or exit('No direct script access allowed');
                 <a href="#">Jumlah data: <?= $no - 1; ?></a>
             </small>
         </div>
-
-
     </main>
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script>

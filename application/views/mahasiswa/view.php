@@ -1,8 +1,9 @@
 <div class="container-fluid">
     <h3><?= $title; ?></h3>
-    <div class="card mb-3 col-lg-8" style="max-width: 540px;">
-        <div class="row no-gutters">
-            <div class="col-md-8">
+    <div class="card mb-3">
+        <div class="row">
+            <!-- awal kolom 1 -->
+            <div class="col-md-6">
                 <div class="col">
                     <div class="card-body">
                         <h4 class="card-title">NIM</h4>
@@ -22,13 +23,15 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-8">
+            <!-- akhir kolom 1 -->
+            <!-- awal kolom 2 -->
+            <div class="col-md-6">
                 <div class="col">
                     <div class="card-body">
                         <h4 class="card-title">Pekerjaan Orang Tua</h4>
                         <p class="card-text"><?= $mahasiswa['ortu_pekerjaan']; ?></p>
                         <h4 class="card-title">Penghasilan Orang Tua</h4>
-                        <p class="card-text"><?= $mahasiswa['ortu_penghasilan']; ?></p>
+                        <p class="card-text"><?= "Rp " . number_format($mahasiswa['ortu_penghasilan']); ?></p>
                         <h4 class="card-title">Tanggungan Orang Tua</h4>
                         <p class="card-text"><?= $mahasiswa['ortu_tanggungan']; ?></p>
                         <h4 class="card-title">No HP Orang Tua</h4>
@@ -42,9 +45,10 @@
                     </div>
                 </div>
             </div>
+            <!-- akhir kolom 2 -->
         </div>
     </div>
-    <button type="button" value="Kembali" onClick="history.go(-1)" class="btn btn-success btn-user">
+    <button type="button" value="Kembali" onClick="history.go(-1)" class="btn btn-primary btn-user">
         Kembali
     </button>
 </div>
