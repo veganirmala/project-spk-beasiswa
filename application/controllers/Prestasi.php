@@ -7,6 +7,7 @@ class Prestasi extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Prestasi_model');
         $this->load->model('Thusulan_model');
     }
@@ -34,6 +35,8 @@ class Prestasi extends CI_Controller
     public function prestasi_tambah()
     {
         if ($this->session->userdata('email')) {
+            $this->form_validation->set_rules('nim', 'NIM', 'required');
+            $this->form_validation->set_rules('id_usulan', 'Tahun Usulan', 'required');
             $this->form_validation->set_rules('nilai_prestasi', 'Nilai Prestasi', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Prestasi";
@@ -48,6 +51,7 @@ class Prestasi extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Prestasi_model->addPrestasi();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Prestasi Berhasil ditambahkan!</div>');
                 redirect('prestasi/prestasi');
             }
         } else {
@@ -59,6 +63,8 @@ class Prestasi extends CI_Controller
     public function prestasi_edit($id)
     {
         if ($this->session->userdata('email')) {
+            $this->form_validation->set_rules('nim', 'NIM', 'required');
+            $this->form_validation->set_rules('id_usulan', 'Tahun Usulan', 'required');
             $this->form_validation->set_rules('nilai_prestasi', 'Nilai Prestasi', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Prestasi";
@@ -75,6 +81,7 @@ class Prestasi extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Prestasi_model->updatePrestasi();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Prestasi Berhasil diubah!</div>');
                 redirect('prestasi/prestasi');
             }
         } else {
@@ -85,6 +92,7 @@ class Prestasi extends CI_Controller
     public function prestasi_delete($id)
     {
         $this->Prestasi_model->deletePrestasi($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Prestasi Berhasil dihapus!</div>');
         redirect('prestasi/prestasi');
     }
 

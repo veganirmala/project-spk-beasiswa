@@ -6,6 +6,7 @@ class PrestasiBidang extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('PrestasiBidang_model');
     }
 
@@ -48,6 +49,7 @@ class PrestasiBidang extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->PrestasiBidang_model->addBidang();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Prestasi Bidang Berhasil ditambahkan!</div>');
                 redirect('prestasibidang/bidang');
             }
         } else {
@@ -81,6 +83,7 @@ class PrestasiBidang extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->PrestasiBidang_model->updateBidang();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Prestasi Bidang Berhasil diubah!</div>');
                 redirect('prestasibidang/bidang');
             }
         } else {
@@ -91,6 +94,7 @@ class PrestasiBidang extends CI_Controller
     public function bidang_delete($id)
     {
         $this->PrestasiBidang_model->deletePrestasiBidang($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Prestasi Bidang Berhasil dihapus!</div>');
         redirect('prestasibidang/bidang');
     }
 

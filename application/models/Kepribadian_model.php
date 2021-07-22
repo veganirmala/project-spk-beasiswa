@@ -12,18 +12,19 @@ class Kepribadian_model extends CI_Model
         $query = "SELECT * FROM tb_kepribadian INNER JOIN tb_mahasiswa 
                 ON tb_mahasiswa.nim = tb_kepribadian.nim
                 INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_kepribadian.id_usulan
-                ORDER BY id_kepribadian ASC";
+                ORDER BY tb_mahasiswa.nim ASC";
         return $this->db->query($query)->result_array();
     }
 
     public function addKepribadian()
     {
-        $id = $this->input->post('id_usulan');
+        $id_usulan = $this->input->post('id_usulan');
         $nim = $this->input->post('nim');
         $nilai_pribadi = $this->input->post('nilai_pribadi');
         $ipk = $this->input->post('ipk');
+
         $data = [
-            'id_usulan' => $id,
+            'id_usulan' => $id_usulan,
             'nim' => $nim,
             'nilai_pribadi' => $nilai_pribadi,
             'ipk' => $ipk
@@ -33,12 +34,17 @@ class Kepribadian_model extends CI_Model
 
     public function updateKepribadian()
     {
-        $id = $this->input->post('id_kepribadian');
+        $id_kepribadian = $this->input->post('id_kepribadian');
+        $id_usulan = $this->input->post('id_usulan');
+        $nilai_pribadi = $this->input->post('nilai_pribadi');
+        $ipk = $this->input->post('ipk');
+
         $data = [
-            'nilai_pribadi' => $this->input->post('nilai_pribadi'),
-            'ipk' => $this->input->post('ipk')
+            'nilai_pribadi' => $nilai_pribadi,
+            'id_usulan' => $id_usulan,
+            'ipk' => $ipk
         ];
-        $this->db->where('id_kepribadian', $id);
+        $this->db->where('id_kepribadian', $id_kepribadian);
         $this->db->update('tb_kepribadian', $data);
     }
 

@@ -7,6 +7,7 @@ class Mahasiswa extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Mahasiswa_model');
         $this->load->model('Prodi_model');
     }
@@ -62,6 +63,7 @@ class Mahasiswa extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Mahasiswa_model->addMahasiswa();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Mahasiswa Berhasil ditambahkan!</div>');
                 redirect('mahasiswa/mahasiswa');
             }
         } else {
@@ -73,7 +75,6 @@ class Mahasiswa extends CI_Controller
     public function mahasiswa_edit($id)
     {
         if ($this->session->userdata('email')) {
-
             $this->form_validation->set_rules('nim', 'NIM', 'required');
             $this->form_validation->set_rules('nama_mhs', 'Nama Mahasiswa', 'required');
             $this->form_validation->set_rules('jk_mhs', 'Jenis Kelamin Mahasiswa', 'required');
@@ -102,6 +103,7 @@ class Mahasiswa extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Mahasiswa_model->updateMahasiswa();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Mahasiswa Berhasil diubah!</div>');
                 redirect('mahasiswa/mahasiswa');
             }
         } else {
@@ -112,11 +114,13 @@ class Mahasiswa extends CI_Controller
     public function mahasiswa_delete($id)
     {
         $this->Mahasiswa_model->deleteMahasiswa($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Mahasiswa Berhasil dihapus!</div>');
         redirect('mahasiswa/mahasiswa');
     }
-    
+
     //menampilkan data mahasiswa
-    public function mahasiswa_view($id){
+    public function mahasiswa_view($id)
+    {
         $data['title'] = 'Detail Data Mahasiswa';
         $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
         $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);

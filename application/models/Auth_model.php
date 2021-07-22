@@ -26,7 +26,7 @@ class Auth_model extends CI_Model
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> email belum terdaftar!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email belum terdaftar!</div>');
             redirect('auth');
         }
     }

@@ -33,22 +33,29 @@ class Thusulan_model extends CI_Model
 
     public function addUsulan()
     {
+        $kuota = $this->input->post('kuota');
+        $tahun = $this->input->post('tahun');
+        $status_usulan = $this->input->post('status_usulan');
         $data = [
-            'kuota' => $this->input->post('kuota'),
-            'tahun' => $this->input->post('tahun'),
-            'status_usulan' => $this->input->post('status_usulan')
+            'kuota' => $kuota,
+            'tahun' => $tahun,
+            'status_usulan' => $status_usulan
         ];
         $this->db->insert('tb_tahun_usulan', $data);
     }
 
     public function updateUsulan()
     {
+        $id_usulan = $this->input->post('id_usulan');
+        $kuota = $this->input->post('kuota');
+        $tahun = $this->input->post('tahun');
+        $status_usulan = $this->input->post('status_usulan');
         $data = [
-            'kuota' => $this->input->post('kuota'),
-            'tahun' => $this->input->post('tahun'),
-            'status_usulan' => $this->input->post('status_usulan')
+            'kuota' => $kuota,
+            'tahun' => $tahun,
+            'status_usulan' => $status_usulan
         ];
-        $this->db->where('id_usulan', $this->input->post('id_usulan'));
+        $this->db->where('id_usulan', $id_usulan);
         $this->db->update('tb_tahun_usulan', $data);
     }
 

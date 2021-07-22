@@ -27,20 +27,25 @@ class Fakultas_model extends CI_Model
 
     public function addFakultas()
     {
+        $nama_fakultas = $this->input->post('nama_fakultas');
+        $ket_fakultas = $this->input->post('ket_fakultas');
         $data = [
-            'nama_fakultas' => $this->input->post('nama_fakultas'),
-            'ket_fakultas' => $this->input->post('ket_fakultas')
+            'nama_fakultas' => $nama_fakultas,
+            'ket_fakultas' => $ket_fakultas
         ];
         $this->db->insert('tb_fakultas', $data);
     }
 
     public function updateFakultas()
     {
+        $id_fakultas = $this->input->post('id_fakultas');
+        $nama_fakultas = $this->input->post('nama_fakultas');
+        $ket_fakultas = $this->input->post('ket_fakultas');
         $data = [
-            'nama_fakultas' => $this->input->post('nama_fakultas'),
-            'ket_fakultas' => $this->input->post('ket_fakultas')
+            'nama_fakultas' => $nama_fakultas,
+            'ket_fakultas' => $ket_fakultas
         ];
-        $this->db->where('id_fakultas', $this->input->post('id_fakultas'));
+        $this->db->where('id_fakultas', $id_fakultas);
         $this->db->update('tb_fakultas', $data);
     }
 

@@ -6,7 +6,7 @@
                 <div class="card-body">
                     <h4 class="card-title">ID User</h4>
                     <p class="card-text"><?= $user['id_user']; ?></p>
-                    <h4 class="card-title">Email User</h4>
+                    <h4 class="card-title">E-mail User</h4>
                     <p class="card-text"><?= $user['email']; ?></p>
                     <h4 class="card-title">Nama User</h4>
                     <p class="card-text"><?= $user['nama']; ?></p>
@@ -20,7 +20,7 @@
             </div>
         </div>
     </div>
-    <button type="button" value="Kembali" onClick="history.go(-1)" class="btn btn-success btn-user">
+    <button type="button" value="Kembali" onClick="history.go(-1)" class="btn btn-primary btn-user">
         Kembali
     </button>
 </div>

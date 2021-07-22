@@ -50,7 +50,7 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>#</th>
+                                            <th>No</th>
                                             <th>Nama Bidang</th>
                                             <th>Tingkat</th>
                                             <th>Juara</th>
@@ -62,7 +62,7 @@
                                     <tbody>
                                         <?php if (empty($bidang)) : ?>
                                             <div class="alert alert-danger" role="alert">
-                                                Data bidang tidak berhasil ditemukan
+                                                Data Prestasi Bidang tidak berhasil ditemukan
                                             </div>
                                         <?php endif; ?>
                                         <?php $i = 1; ?>

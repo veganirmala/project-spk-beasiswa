@@ -7,7 +7,7 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->helper(array('url', 'form'));
-        //is_logged_in();
+        is_logged_in();
         $this->load->model('Mahasiswa_model');
         $this->load->model('Prestasi_model');
         $this->load->model('Kepribadian_model');

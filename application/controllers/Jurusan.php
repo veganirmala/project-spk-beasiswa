@@ -6,6 +6,7 @@ class Jurusan extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        is_logged_in();
         $this->load->model('Jurusan_model');
         $this->load->model('Fakultas_model');
     }
@@ -49,6 +50,7 @@ class Jurusan extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Jurusan_model->addJurusan();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Jurusan Berhasil ditambahkan!</div>');
                 redirect('jurusan/jurusan');
             }
         } else {
@@ -77,6 +79,7 @@ class Jurusan extends CI_Controller
                 $this->load->view('template/footer');
             } else {
                 $this->Jurusan_model->updateJurusan();
+                $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Jurusan Berhasil diubah!</div>');
                 redirect('jurusan/jurusan');
             }
         } else {
@@ -87,6 +90,7 @@ class Jurusan extends CI_Controller
     public function jurusan_delete($id)
     {
         $this->Jurusan_model->deleteJurusan($id);
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Data Jurusan Berhasil dihapus!</div>');
         redirect('jurusan/jurusan');
     }
 

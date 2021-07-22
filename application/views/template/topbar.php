@@ -45,14 +45,14 @@
                     </a>
                     <!-- Dropdown - User Information -->
                     <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                        <a class="dropdown-item" href="<?= base_url(); ?>user/user_edit/<?= $user_email['id_user']; ?>">
+                        <a class="dropdown-item" href="<?= base_url(); ?>auth/edit_profile/<?= $user_email['id_user']; ?>">
                             <i class="fas fa-user-edit fa-sm fa-fw mr-2 text-gray-400"></i>
                             Edit Profile
                         </a>
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" data-toggle="modal" data-target="#logoutModal">
                             <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                            Logout
+                            Log out
                         </a>
                     </div>
                 </li>
