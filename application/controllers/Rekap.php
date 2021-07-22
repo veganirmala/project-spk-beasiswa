@@ -233,21 +233,61 @@ class Rekap extends CI_Controller
             $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
             $datamahasiswa = $this->Rekap_model->getDataMhs();
-            /* Metode SAW
-                1. Ambil data mahasiswa dari db yang akan di sinkronisasi !!DONE!!
-                2. Masukkan data mahasiswa ke dalam array dengan nama $mahasiswa !!DONE!!
-                3. Setelah itu
-            */
-            foreach ($datamahasiswa as $datamhs) {
-                $this->mahasiswa = [
-                    $datamhs['nim'],
-                    intval($datamhs['ipk']),
-                    intval($datamhs['nilai_pribadi']),
-                    intval($datamhs['nilai_prestasi']),
-                    intval($datamhs['ortu_penghasilan'])
-                ]; //ini adalah array mahasiswa
-                echo json_encode($this->mahasiswa) . "<br>";
-            }
+            $this->run($datamahasiswa);
+        }
+    }
+
+    public function run($datamahasiswa)
+    {
+        foreach ($datamahasiswa as $datamhs) {
+            $this->mahasiswa = [
+                $datamhs['nim'],
+                $datamhs['ipk'],
+                $datamhs['nilai_pribadi'],
+                $datamhs['nilai_prestasi'],
+                $datamhs['ortu_penghasilan'],
+            ];
+            echo json_encode($this->mahasiswa);
+            echo "<br>";
+
+            $skor_ipk = $this->getIPK($this->mahasiswa[1]);
+            echo " SKOR IPK : " . $skor_ipk;
+            echo "<br>";
+
+            $skor_pribadi = $this->getPribadi($this->mahasiswa[2]);
+            echo " SKOR PRIBADI : " . $skor_pribadi;
+            echo "<br>";
+
+            $skor_prestasi = $this->getPrestasi($this->mahasiswa[3]);
+            echo " SKOR PRESTASI : " . $skor_prestasi;
+            echo "<br>";
+
+            $skor_ekonomi = $this->getEkonomi($this->mahasiswa[4]);
+            echo " SKOR PRIBADI : " . $skor_ekonomi;
+            echo "<br>";
+
+            $nim =  $this->mahasiswa[0];
+
+            $this->db->where('nim', $nim);
+            $this->db->delete('kriteria');
+
+            //simpan data mahasiswa ke dalam tabel kriteria
+            $dataalternatif = [
+                'nim' => $nim,
+                'kriteria_ip' => $skor_ipk,
+                'kriteria_pribadi' => $skor_pribadi,
+                'kriteria_prestasi' => $skor_prestasi,
+                'kriteria_ekonomi' => $skor_ekonomi
+            ];
+            $this->db->insert('kriteria', $dataalternatif);
+
+
+
+
+
+
+            // Batas tiap mahasiswa
+            echo "<br>";
         }
     }
 
@@ -263,6 +303,52 @@ class Rekap extends CI_Controller
             return 0.4;
         } else {
             return 0.2;
+        }
+    }
+
+    public function getPribadi($pribadi)
+    {
+        if ($pribadi >= 29) {
+            return 1;
+        } else if ($pribadi >= 26) {
+            return 0.8;
+        } else if ($pribadi >= 21) {
+            return 0.6;
+        } else if ($pribadi >= 16) {
+            return 0.4;
+        } else if ($pribadi >= 10) {
+            return 0.2;
+        } else {
+            return 0;
+        }
+    }
+
+    public function getPrestasi($prestasi)
+    {
+        if ($prestasi >= 21) {
+            return 1;
+        } else if ($prestasi >= 16) {
+            return 0.8;
+        } else if ($prestasi >= 11) {
+            return 0.6;
+        } else if ($prestasi >= 6) {
+            return 0.4;
+        } else {
+            return 0.2;
+        }
+    }
+    public function getEkonomi($ekonomi)
+    {
+        if ($ekonomi >= 3000001) {
+            return 0.2;
+        } else if ($ekonomi >= 2000001) {
+            return 0.4;
+        } else if ($ekonomi >= 1000001) {
+            return 0.6;
+        } else if ($ekonomi >= 500001) {
+            return 0.8;
+        } else {
+            return 1;
         }
     }
 }
