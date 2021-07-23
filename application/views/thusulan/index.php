@@ -42,7 +42,7 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-                            <a href="<?= base_url('thusulan/usulan_tambah'); ?>" class="btn btn-primary" title="Tambah Data"><i class="fas fa-plus"> Tambah</i></a>
+                            <a href="<?= base_url('thusulan/usulan_tambah'); ?>" class="btn btn-primary" title="Tambah Data"><i class="fas fa-plus"></i> Tambah</a>
                             <?php echo $this->session->flashdata('message'); ?>
                         </div>
                         <div class="card-body">

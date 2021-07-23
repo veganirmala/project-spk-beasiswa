@@ -205,9 +205,9 @@ class Rekap extends CI_Controller
 
             // //buat if status nilai akhir
             if ($this->total >= 50) {
-                $status = 'Direkomendasikan';
+                $status = 'Layak';
             } else {
-                $status = 'Tidak Direkomendasikan';
+                $status = 'Tidak Layak';
             }
 
             $id_usulan_aktif = $this->Rekap_model->getIDUsulan()['id_usulan'];

@@ -41,8 +41,8 @@
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
                             <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-                            <a href="<?= base_url('rekap/rekap_sinkron'); ?>" class="btn btn-primary" title="Sinkronisasi Data"><i class="fas fa-spinner"> Sinkronisasi</i></a>
-                            <a href="<?= base_url('rekap/cetak_rekap'); ?>" class="btn btn-info" title="Cetak Data"><i class="fas fa-file-download"> Cetak</i></a>
+                            <a href="<?= base_url('rekap/rekap_sinkron'); ?>" class="btn btn-primary" title="Sinkronisasi Data"><i class="fas fa-spinner"></i> Sinkronisasi</a>
+                            <a href="<?= base_url('rekap/cetak_rekap'); ?>" class="btn btn-info" title="Cetak Data"><i class="fas fa-file-download"></i> Cetak</a>
                             <?php echo $this->session->flashdata('message'); ?>
                         </div>
                         <div class="card-body">
@@ -53,6 +53,7 @@
                                             <th>No</th>
                                             <th>NIM</th>
                                             <th>NAMA</th>
+                                            <th>Tahun Usulan</th>
                                             <th>Skor IPK</th>
                                             <th>Skor Pribadi</th>
                                             <th>Skor Prestasi</th>
@@ -73,6 +74,7 @@
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $rkp['nim']; ?></td>
                                                 <td><?= $rkp['nama_mhs']; ?></td>
+                                                <td><?= $rkp['tahun']; ?></td>
                                                 <td><?= $rkp['skor_ip']; ?></td>
                                                 <td><?= $rkp['skor_pribadi']; ?></td>
                                                 <td><?= $rkp['skor_prestasi']; ?></td>

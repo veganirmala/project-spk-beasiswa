@@ -13,7 +13,7 @@ class Rekap_model extends CI_Model
     {
         $qr = "SELECT * FROM tb_rekap 
                 INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
-                -- INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
+                INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
                 ORDER BY id_rekap ASC";
 
         return $this->db->query($qr)->result_array();

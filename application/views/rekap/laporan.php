@@ -66,6 +66,7 @@
                     <tr>
                         <th scope="col">NO</th>
                         <th scope="col">NIM</th>
+                        <th scope="col">TAHUN USULAN</th>
                         <th scope="col">SKOR IPK</th>
                         <th scope="col">SKOR PRIBADI</th>
                         <th scope="col">SKOR PRESTASI</th>
@@ -80,6 +81,7 @@
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $rkp['nim']; ?></td>
+                            <td><?= $rkp['tahun']; ?></td>
                             <td><?= $rkp['skor_ip']; ?></td>
                             <td><?= $rkp['skor_pribadi']; ?></td>
                             <td><?= $rkp['skor_prestasi']; ?></td>
