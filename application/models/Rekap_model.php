@@ -13,7 +13,7 @@ class Rekap_model extends CI_Model
     {
         $qr = "SELECT * FROM tb_rekap 
                 INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
-                INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
+                -- INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
                 ORDER BY id_rekap ASC";
 
         return $this->db->query($qr)->result_array();
@@ -69,9 +69,11 @@ class Rekap_model extends CI_Model
         return $this->db->get()->row_array();
     }
 
-    public function HapusDataKriteria()
+    public function getIDUsulan()
     {
-        //kosongkan isi tabel kriteria
-        $this->db->delete('kriteria', ['id']);
+        $qr = "SELECT id_usulan
+            FROM tb_tahun_usulan
+            WHERE status_usulan = 'Aktif'";
+        return $this->db->query($qr)->row_array();
     }
 }

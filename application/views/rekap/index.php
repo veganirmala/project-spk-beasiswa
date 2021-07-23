@@ -15,6 +15,8 @@
 
     <!-- Custom styles for this template -->
     <link href="<?= base_url(); ?>assets/sbadmin/css/sb-admin-2.min.css" rel="stylesheet">
+    <!-- Custom styles for this page -->
+    <link href="<?= base_url(); ?>assets/sbadmin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
 </head>
 
@@ -50,6 +52,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>NIM</th>
+                                            <th>NAMA</th>
                                             <th>Skor IPK</th>
                                             <th>Skor Pribadi</th>
                                             <th>Skor Prestasi</th>
@@ -69,6 +72,7 @@
                                             <tr>
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $rkp['nim']; ?></td>
+                                                <td><?= $rkp['nama_mhs']; ?></td>
                                                 <td><?= $rkp['skor_ip']; ?></td>
                                                 <td><?= $rkp['skor_pribadi']; ?></td>
                                                 <td><?= $rkp['skor_prestasi']; ?></td>
