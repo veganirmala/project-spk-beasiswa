@@ -59,7 +59,9 @@ class Rekap extends CI_Controller
             $this->db->truncate('tb_rekap');
 
             $this->run($datamahasiswa);
-            // redirect('rekap/rekap');
+
+            redirect('rekap/rekap');
+
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
             $this->load->view('template/topbar', $data);
@@ -209,19 +211,19 @@ class Rekap extends CI_Controller
             }
 
             $id_usulan_aktif = $this->Rekap_model->getIDUsulan()['id_usulan'];
-            var_dump($id_usulan_aktif);
+            //var_dump($id_usulan_aktif);
             //simpan ke tabel rekap
-            // $datarekap = [
-            //     'id_usulan' => $id_usulan_aktif,
-            //     'nim' => $nim,
-            //     'skor_ip' => $skor_ipk,
-            //     'skor_prestasi' => $skor_prestasi,
-            //     'skor_ekonomi' => $skor_ekonomi,
-            //     'skor_pribadi' => $skor_pribadi,
-            //     'skor_total' => $this->total,
-            //     'status' => $status
-            // ];
-            // $this->db->insert('tb_rekap', $datarekap);
+            $datarekap = [
+                'id_usulan' => $id_usulan_aktif,
+                'nim' => $nim,
+                'skor_ip' => $skor_ipk,
+                'skor_prestasi' => $skor_prestasi,
+                'skor_ekonomi' => $skor_ekonomi,
+                'skor_pribadi' => $skor_pribadi,
+                'skor_total' => $this->total,
+                'status' => $status
+            ];
+            $this->db->insert('tb_rekap', $datarekap);
         }
     }
 
