@@ -116,7 +116,7 @@ class Rekap extends CI_Controller
 
             //select dulu data dari tabel kriteria dan tabel mahasiswa
             $qr = "SELECT kriteria.nim, kriteria.kriteria_ip, kriteria.kriteria_pribadi, kriteria.kriteria_prestasi,
-              kriteria.kriteria_ekonomi FROM kriteria INNER JOIN tb_mahasiswa ON kriteria.nim = tb_mahasiswa.nim";
+            kriteria.kriteria_ekonomi FROM kriteria INNER JOIN tb_mahasiswa ON kriteria.nim = tb_mahasiswa.nim";
             $alternatif = $this->db->query($qr)->result_array();
 
             //simpan semua data mahasiswa bentuk array
@@ -208,7 +208,7 @@ class Rekap extends CI_Controller
                 $status = 'Tidak Direkomendasikan';
             }
 
-            $id_usulan_aktif = $this->Rekap_model->getIDUsulan();
+            $id_usulan_aktif = $this->Rekap_model->getIDUsulan()['id_usulan'];
             var_dump($id_usulan_aktif);
             //simpan ke tabel rekap
             // $datarekap = [
