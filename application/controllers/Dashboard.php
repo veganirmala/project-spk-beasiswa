@@ -20,6 +20,7 @@ class Dashboard extends CI_Controller
         //ngambil data petugas yang login
         $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
+        //ngambil total data sesuai di database
         $data['total_mahasiswa'] = $this->Mahasiswa_model->hitungMahasiswa();
         $data['total_prestasi'] = $this->Prestasi_model->hitungPrestasi();
         $data['total_kepribadian'] = $this->Kepribadian_model->hitungKepribadian();

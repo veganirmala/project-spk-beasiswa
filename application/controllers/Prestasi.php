@@ -89,6 +89,7 @@ class Prestasi extends CI_Controller
         }
     }
 
+    //hapus data prestasi
     public function prestasi_delete($id)
     {
         $this->Prestasi_model->deletePrestasi($id);
@@ -96,6 +97,7 @@ class Prestasi extends CI_Controller
         redirect('prestasi/prestasi');
     }
 
+    //detail data prestasi
     public function prestasi_view($id)
     {
         $data['title'] = 'Detail Data Prestasi';

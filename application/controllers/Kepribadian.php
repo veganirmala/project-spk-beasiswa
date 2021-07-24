@@ -91,6 +91,7 @@ class Kepribadian extends CI_Controller
         }
     }
 
+    //hapus data kepribadian
     public function kepribadian_delete($id)
     {
         $this->Kepribadian_model->deleteKepribadian($id);
@@ -98,6 +99,7 @@ class Kepribadian extends CI_Controller
         redirect('kepribadian/kepribadian');
     }
 
+    //detail data kepribadian
     public function kepribadian_view($id)
     {
         $data['title'] = 'Detail Data kepribadian';

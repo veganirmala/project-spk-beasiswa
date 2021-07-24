@@ -10,11 +10,6 @@ class User_model extends CI_Model
 
     public function getUser()
     {
-        // $this->db->select('*');
-        // $this->db->from('tb_user');
-
-        // return $this->db->get()->result_array();
-
         $query = "SELECT * FROM tb_user
         ORDER BY id_user ASC";
         return $this->db->query($query)->result_array();
@@ -72,15 +67,6 @@ class User_model extends CI_Model
                 'status' => $status
             ];
         }
-        // $data = [
-        //     'email' => $this->input->post('email'),
-        //     'nama' => $this->input->post('nama'),
-        //     'jk_user' => $this->input->post('jk_user'),
-        //     'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
-        //     'tipe' => $this->input->post('tipe'),
-        //     'status' => $this->input->post('status')
-        // ];
-
         $this->db->where('id_user', $this->input->post('id_user'));
         $this->db->update('tb_user', $data);
     }

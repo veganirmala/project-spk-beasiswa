@@ -10,7 +10,7 @@ class Thusulan extends CI_Controller
         $this->load->model('Thusulan_model');
     }
 
-    //data usulan
+    //menampilkan data tahun usulan
     public function usulan()
     {
         if ($this->session->userdata('email')) {
@@ -29,7 +29,7 @@ class Thusulan extends CI_Controller
         }
     }
 
-    //tambah thusulan
+    //tambah data tahun usulan
     public function usulan_tambah()
     {
         if ($this->session->userdata('email')) {
@@ -56,7 +56,7 @@ class Thusulan extends CI_Controller
         }
     }
 
-    //edit data usulan
+    //edit data tahun usulan
     public function usulan_edit($id)
     {
         if ($this->session->userdata('email')) {
@@ -84,6 +84,7 @@ class Thusulan extends CI_Controller
         }
     }
 
+    //hapus data tahun usulan
     public function usulan_delete($id)
     {
         $this->Thusulan_model->deleteUsulan($id);
@@ -91,6 +92,7 @@ class Thusulan extends CI_Controller
         redirect('thusulan/usulan');
     }
 
+    //detail data tahun usulan
     public function usulan_view($id)
     {
         $data['title'] = 'Detail Data Tahun Usulan';

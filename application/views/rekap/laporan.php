@@ -66,35 +66,37 @@
                     <tr>
                         <th scope="col">NO</th>
                         <th scope="col">NIM</th>
+                        <th scope="col">NAMA MAHASISWA</th>
                         <th scope="col">TAHUN USULAN</th>
-                        <th scope="col">SKOR IPK</th>
-                        <th scope="col">SKOR PRIBADI</th>
-                        <th scope="col">SKOR PRESTASI</th>
-                        <th scope="col">SKOR EKONOMI</th>
                         <th scope="col">SKOR TOTAL</th>
-                        <th scope="col">STATUS</th>
+                        <th scope="col">STATUS KELAYAKAN</th>
+                        <th scope="col">RANKING</th>
                     </tr>
                 </thead>
                 <tbody>
                     <?php $i = 1; ?>
+                    <?php $ranking = 1; ?>
                     <?php foreach ($rekap as $rkp) : ?>
                         <tr>
                             <th scope="row"><?= $i; ?></th>
                             <td><?= $rkp['nim']; ?></td>
+                            <td><?= $rkp['nama_mhs']; ?></td>
                             <td><?= $rkp['tahun']; ?></td>
-                            <td><?= $rkp['skor_ip']; ?></td>
+                            <!-- <td><?= $rkp['skor_ip']; ?></td>
                             <td><?= $rkp['skor_pribadi']; ?></td>
                             <td><?= $rkp['skor_prestasi']; ?></td>
-                            <td><?= $rkp['skor_ekonomi']; ?></td>
+                            <td><?= $rkp['skor_ekonomi']; ?></td> -->
                             <td><?= $rkp['skor_total']; ?></td>
                             <td><?= $rkp['status']; ?></td>
+                            <td><?= $ranking ?></td>
                         </tr>
                         <?php $i++; ?>
+                        <?php $ranking++; ?>
                     <?php endforeach; ?>
                 </tbody>
             </table>
         </center>
-        <!-- <table>
+        <table>
             <tr>
                 <td class="text2" align="left">Menyetujui,<br>Ketua<br><br><br>(Drs.lalala)<br>NIP.0775</td>
             </tr>
@@ -103,7 +105,7 @@
             <tr>
                 <td class="text3" align="right">Singaraja,<br>Staff Beasiswa<br><br><br>(Drs.lalala)<br>NIP.0775</td>
             </tr>
-        </table> -->
+        </table>
         <script type="text/javascript">
             window.print();
         </script>

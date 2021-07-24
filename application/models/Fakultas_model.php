@@ -10,10 +10,6 @@ class Fakultas_model extends CI_Model
 
     public function getFakultas()
     {
-        // $this->db->select('*');
-        // $this->db->from('tb_fakultas');
-        // return $this->db->get()->result_array();
-
         $query = "SELECT * FROM tb_fakultas
                 ORDER BY id_fakultas ASC";
 

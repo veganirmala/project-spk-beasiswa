@@ -29,11 +29,13 @@ class Auth extends CI_Controller
         }
     }
 
+    //memanggil function login dari auth model
     public function _login()
     {
         $this->Auth_model->login();
     }
 
+    //digunakan registrasi oleh user
     public function registration()
     {
         if ($this->session->userdata('email')) {
@@ -68,6 +70,7 @@ class Auth extends CI_Controller
         }
     }
 
+    //digunakan edit profile user
     public function edit_profile($id)
     {
         $this->form_validation->set_rules('email', 'Email', 'required');
@@ -94,11 +97,11 @@ class Auth extends CI_Controller
         }
     }
 
+    //untuk logout
     public function logout()
     {
         $this->session->unset_userdata('email');
         $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda Berhasil Logout!</div>');
         redirect('auth');
-        //redirect('aksesuser');
     }
 }

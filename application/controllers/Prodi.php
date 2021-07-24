@@ -91,6 +91,7 @@ class Prodi extends CI_Controller
         }
     }
 
+    //hapus data prodi
     public function prodi_delete($id)
     {
         $this->Prodi_model->deleteProdi($id);
@@ -98,6 +99,7 @@ class Prodi extends CI_Controller
         redirect('prodi/prodi');
     }
 
+    //detail data prodi
     public function prodi_view($id)
     {
         $data['title'] = 'Detail Data Prodi';

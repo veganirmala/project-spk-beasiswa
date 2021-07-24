@@ -111,6 +111,7 @@ class Mahasiswa extends CI_Controller
         }
     }
 
+    //hapus data mahasiswa
     public function mahasiswa_delete($id)
     {
         $this->Mahasiswa_model->deleteMahasiswa($id);
@@ -118,7 +119,7 @@ class Mahasiswa extends CI_Controller
         redirect('mahasiswa/mahasiswa');
     }
 
-    //menampilkan data mahasiswa
+    //detail data mahasiswa
     public function mahasiswa_view($id)
     {
         $data['title'] = 'Detail Data Mahasiswa';

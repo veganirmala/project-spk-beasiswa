@@ -12,7 +12,7 @@ class User extends CI_Controller
         $this->load->model('User_model');
     }
 
-    //nampilin seluruh data dari tabel user
+    //menampilkan seluruh data dari tabel user
     public function user()
     {
         $data['title'] = "Data User";

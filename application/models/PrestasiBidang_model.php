@@ -9,11 +9,6 @@ class PrestasiBidang_model extends CI_Model
 
     public function getPrestasiBidang()
     {
-        // $this->db->select('*');
-        // $this->db->from('tb_prestasi_bidang');
-
-        // return $this->db->get()->result_array();
-
         $query = "SELECT * FROM tb_prestasi_bidang
         ORDER BY id_bidang ASC";
         return $this->db->query($query)->result_array();

@@ -87,6 +87,7 @@ class Jurusan extends CI_Controller
         }
     }
 
+    //hapus data jurusan
     public function jurusan_delete($id)
     {
         $this->Jurusan_model->deleteJurusan($id);
@@ -94,6 +95,7 @@ class Jurusan extends CI_Controller
         redirect('jurusan/jurusan');
     }
 
+    //detail data jurusan
     public function jurusan_view($id)
     {
         $data['title'] = 'Detail Data Jurusan';

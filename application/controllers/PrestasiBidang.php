@@ -70,11 +70,7 @@ class PrestasiBidang extends CI_Controller
                 $data['title'] = "Edit Data Prestasi  Bidang";
                 $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
-                // $qr = "select tb_prestasi_bidang.* from tb_prestasi_bidang where tb_prestasi_bidang.id_bidang=" . $id;
-                // $data['bidang'] = $this->db->query($qr)->row_array();
-
                 $data['bidang'] = $this->PrestasiBidang_model->getPrestasiBidangById($id);
-
 
                 $this->load->view('template/header', $data);
                 $this->load->view('template/sidebar');
@@ -91,6 +87,7 @@ class PrestasiBidang extends CI_Controller
         }
     }
 
+    //hapus data prestasi bidang
     public function bidang_delete($id)
     {
         $this->PrestasiBidang_model->deletePrestasiBidang($id);
@@ -98,6 +95,7 @@ class PrestasiBidang extends CI_Controller
         redirect('prestasibidang/bidang');
     }
 
+    //detail data prestasi bidang
     public function bidang_view($id)
     {
         $data['title'] = 'Detail Data Prestasi Bidang';

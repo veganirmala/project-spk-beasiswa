@@ -52,14 +52,15 @@
                                         <tr>
                                             <th>No</th>
                                             <th>NIM</th>
-                                            <th>NAMA</th>
+                                            <!-- <th>NAMA</th> -->
                                             <th>Tahun Usulan</th>
                                             <th>Skor IPK</th>
                                             <th>Skor Pribadi</th>
                                             <th>Skor Prestasi</th>
                                             <th>Skor Ekonomi</th>
                                             <th>Skor Total</th>
-                                            <th>Status</th>
+                                            <th>Status Kelayakan</th>
+                                            <th>Ranking</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -69,11 +70,12 @@
                                             </div>
                                         <?php endif; ?>
                                         <?php $i = 1; ?>
+                                        <?php $ranking = 1; ?>
                                         <?php foreach ($rekap as $rkp) : ?>
                                             <tr>
                                                 <th scope="row"><?= $i; ?></th>
                                                 <td><?= $rkp['nim']; ?></td>
-                                                <td><?= $rkp['nama_mhs']; ?></td>
+                                                <!-- <td><?= $rkp['nama_mhs']; ?></td> -->
                                                 <td><?= $rkp['tahun']; ?></td>
                                                 <td><?= $rkp['skor_ip']; ?></td>
                                                 <td><?= $rkp['skor_pribadi']; ?></td>
@@ -81,8 +83,10 @@
                                                 <td><?= $rkp['skor_ekonomi']; ?></td>
                                                 <td><?= $rkp['skor_total']; ?></td>
                                                 <td><?= $rkp['status']; ?></td>
+                                                <td><?= $ranking ?></td>
                                             </tr>
                                             <?php $i++; ?>
+                                            <?php $ranking++; ?>
                                         <?php endforeach; ?>
                                     </tbody>
                                 </table>

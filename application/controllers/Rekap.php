@@ -41,7 +41,6 @@ class Rekap extends CI_Controller
         $data['rekap'] = $this->Rekap_model->getRekap();
 
         $this->load->view('template/header', $data);
-        //$this->load->view('rekap/cetak_rekap', $data);
         $this->load->view('rekap/laporan', $data);
         $this->load->view('template/footer');
     }
@@ -53,13 +52,16 @@ class Rekap extends CI_Controller
             $data['title'] = "Data Rekap Hasil Seleksi";
             $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
+            //ngambil data mahasiswa dengan inner join
             $datamahasiswa = $this->Rekap_model->getDataMhs();
 
             //kosongin tabel data rekap 
             $this->db->truncate('tb_rekap');
 
+            //panggil function datamahasiswa
             $this->run($datamahasiswa);
 
+            //panggil function rekap dari controller rekap
             redirect('rekap/rekap');
 
             $this->load->view('template/header', $data);
@@ -73,6 +75,7 @@ class Rekap extends CI_Controller
     public function run($datamahasiswa)
     {
         foreach ($datamahasiswa as $datamhs) {
+            //ngambil data mahasiswa dengan getDataMhs
             $this->mahasiswa = [
                 $datamhs['nim'],
                 $datamhs['ipk'],
@@ -83,28 +86,34 @@ class Rekap extends CI_Controller
             // echo json_encode($this->mahasiswa);
             // echo "<br>";
 
+            //simpan data skor ipk di kolom 1
             $skor_ipk = $this->getIPK($this->mahasiswa[1]);
             // echo " SKOR IPK : " . $skor_ipk;
             // echo "<br>";
 
+            //simpan data skor pribadi di kolom 2
             $skor_pribadi = $this->getPribadi($this->mahasiswa[2]);
             // echo " SKOR PRIBADI : " . $skor_pribadi;
             // echo "<br>";
 
+            //simpan data skor prestasi di kolom 3
             $skor_prestasi = $this->getPrestasi($this->mahasiswa[3]);
             // echo " SKOR PRESTASI : " . $skor_prestasi;
             // echo "<br>";
 
+            //simpan data skor ekonomi di kolom 4
             $skor_ekonomi = $this->getEkonomi($this->mahasiswa[4]);
             // echo " SKOR EKONOMI : " . $skor_ekonomi;
             // echo "<br>";
 
+            //simpan data nim mahasiswa di kolom 1
             $nim =  $this->mahasiswa[0];
 
+            //kosongin dulu data mahasiswa di tabel kriteria 
             $this->db->where('nim', $nim);
             $this->db->delete('kriteria');
 
-            //simpan data mahasiswa ke dalam tabel kriteria
+            //simpan ulang data mahasiswa ke dalam tabel kriteria
             $dataalternatif = [
                 'nim' => $nim,
                 'kriteria_ip' => $skor_ipk,
@@ -125,8 +134,6 @@ class Rekap extends CI_Controller
             for ($i = 0; $i < count($alternatif); $i++) {
                 $this->nilai[$i] = [];
                 for ($j = 0; $j < 5; $j++) {
-                    //buatin jenis kolom termasuk ke dalam benefit dan cost
-
                     $this->nilai[$i][0] = $nim;
                     $this->nilai[$i][1] = $skor_ipk; //benefit
                     $this->nilai[$i][2] = $skor_pribadi; //benefit
@@ -181,10 +188,10 @@ class Rekap extends CI_Controller
             // echo "<br>";
             //}
 
-            //Rumus Normalisasi
             //Nilai Bobot Persentase Per Kriteria
             $w = [35, 25, 30, 10];
 
+            //Rumus Normalisasi dikalikan dengan bobot
             $this->normalisasi[0] = $w[0] * $this->penilaian[1];
             $this->normalisasi[1] = $w[1] * $this->penilaian[2];
             $this->normalisasi[2] = $w[2] * $this->penilaian[3];
@@ -195,6 +202,7 @@ class Rekap extends CI_Controller
             // //batas tiap mahasiswa
             // echo "<br>";
 
+            //hitung total nilai mahasiswa
             $this->total = $this->normalisasi[0] + $this->normalisasi[1] + $this->normalisasi[2] + $this->normalisasi[3];
 
             // echo "Nilai Skor Akhir";
@@ -203,15 +211,18 @@ class Rekap extends CI_Controller
             // //batas tiap mahasiswa
             // echo "<br>";
 
-            // //buat if status nilai akhir
-            if ($this->total >= 50) {
+            //buat if status nilai akhir
+            if ($this->total >= 80) {
+                $status = 'Sangat Layak';
+            } else if ($this->total >= 50) {
                 $status = 'Layak';
             } else {
                 $status = 'Tidak Layak';
             }
 
+            //ambil id usulan yang aktif, jika mau cek tahun usulan yang berbeda edit dulu status tahun usulan di menu tahun usulan
             $id_usulan_aktif = $this->Rekap_model->getIDUsulan()['id_usulan'];
-            //var_dump($id_usulan_aktif);
+
             //simpan ke tabel rekap
             $datarekap = [
                 'id_usulan' => $id_usulan_aktif,
@@ -227,6 +238,7 @@ class Rekap extends CI_Controller
         }
     }
 
+    //function cek skor IPK
     public function getIPK($ipk)
     {
         if ($ipk >= 3.61) {
@@ -242,6 +254,7 @@ class Rekap extends CI_Controller
         }
     }
 
+    //function cek skor Pribadi
     public function getPribadi($pribadi)
     {
         if ($pribadi >= 29) {
@@ -259,6 +272,7 @@ class Rekap extends CI_Controller
         }
     }
 
+    //function cek skor Prestasi
     public function getPrestasi($prestasi)
     {
         if ($prestasi >= 21) {
@@ -273,6 +287,8 @@ class Rekap extends CI_Controller
             return 0.2;
         }
     }
+
+    //function cek skor Ekonomi
     public function getEkonomi($ekonomi)
     {
         if ($ekonomi >= 3000001) {
