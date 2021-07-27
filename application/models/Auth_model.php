@@ -14,6 +14,8 @@ class Auth_model extends CI_Model
         $user = $this->db->get_where('tb_user', ['email' => $email])->row_array();
         //cek jika user ada
         if ($user) {
+            //jika user aktif 
+            // if ($user['is_active'] == 1) {
             //cek password untuk user
             if (password_verify($password, $user['password'])) {
                 $data = [
@@ -25,6 +27,10 @@ class Auth_model extends CI_Model
                 $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password Salah!</div>');
                 redirect('auth');
             }
+            // } else {
+            //     $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email belum terdaftar!</div>');
+            //     redirect('auth');
+            // }
         } else {
             $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email belum terdaftar!</div>');
             redirect('auth');
