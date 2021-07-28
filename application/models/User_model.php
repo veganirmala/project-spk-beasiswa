@@ -8,16 +8,21 @@ class User_model extends CI_Model
         parent::__construct();
     }
 
+    public function getEmail()
+    {
+        return $this->db->get_where('user', ['email' => $this->session->userdata('email')])->row_array();
+    }
+
     public function getUser()
     {
-        $query = "SELECT * FROM tb_user
+        $query = "SELECT * FROM user
         ORDER BY id_user ASC";
         return $this->db->query($query)->result_array();
     }
 
     public function getUserById($id)
     {
-        return $this->db->get_where('tb_user', ['id_user' => $id])->row_array();
+        return $this->db->get_where('user', ['id_user' => $id])->row_array();
     }
 
     public function addUser()
@@ -36,7 +41,7 @@ class User_model extends CI_Model
             'tipe' => $tipe,
             'status' => $status
         ];
-        $this->db->insert('tb_user', $data);
+        $this->db->insert('user', $data);
     }
 
     public function updateUser()
@@ -68,11 +73,11 @@ class User_model extends CI_Model
             ];
         }
         $this->db->where('id_user', $this->input->post('id_user'));
-        $this->db->update('tb_user', $data);
+        $this->db->update('user', $data);
     }
 
     public function deleteUser($id)
     {
-        $this->db->delete('tb_user', ['id_user' => $id]);
+        $this->db->delete('user', ['id_user' => $id]);
     }
 }

@@ -17,7 +17,7 @@ class Prodi extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Prodi";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['prodi'] = $this->Prodi_model->getProdi();
 
@@ -41,7 +41,7 @@ class Prodi extends CI_Controller
             $this->form_validation->set_rules('ket_prodi', 'Keterangan Prodi', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Prodi";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['jurusan'] = $this->Jurusan_model->getJurusan();
 
@@ -70,7 +70,7 @@ class Prodi extends CI_Controller
             $this->form_validation->set_rules('ket_prodi', 'Keterangan Prodi', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Prodi";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['prodi'] = $this->Prodi_model->getProdiById($id);
 
@@ -103,7 +103,7 @@ class Prodi extends CI_Controller
     public function prodi_view($id)
     {
         $data['title'] = 'Detail Data Prodi';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['prodi'] = $this->Prodi_model->getProdiById($id);
 

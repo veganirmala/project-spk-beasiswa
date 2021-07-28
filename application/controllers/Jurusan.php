@@ -16,7 +16,7 @@ class Jurusan extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Jurusan";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['jurusan'] = $this->Jurusan_model->getJurusan();
 
@@ -39,7 +39,7 @@ class Jurusan extends CI_Controller
             $this->form_validation->set_rules('ket_jurusan', 'Keterangan Jurusan', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Jurusan";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['fakultas'] = $this->Fakultas_model->getFakultas();
 
@@ -67,7 +67,7 @@ class Jurusan extends CI_Controller
             $this->form_validation->set_rules('ket_jurusan', 'Keterangan Jurusan', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Jurusan";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['jurusan'] = $this->Jurusan_model->getJurusanById($id);
                 $data['fakultas'] = $this->Fakultas_model->getFakultas();
@@ -99,7 +99,7 @@ class Jurusan extends CI_Controller
     public function jurusan_view($id)
     {
         $data['title'] = 'Detail Data Jurusan';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
         $data['jurusan'] = $this->Jurusan_model->getJurusanById($id);
 
         $this->load->view('template/header', $data);

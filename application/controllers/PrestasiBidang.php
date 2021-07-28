@@ -15,7 +15,7 @@ class PrestasiBidang extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Prestasi Bidang";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['bidang'] = $this->PrestasiBidang_model->getPrestasiBidang();
 
@@ -40,7 +40,7 @@ class PrestasiBidang extends CI_Controller
             $this->form_validation->set_rules('status_bidang', 'Status Bidang', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Prestasi Bidang";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $this->load->view('template/header', $data);
                 $this->load->view('template/sidebar');
@@ -68,7 +68,7 @@ class PrestasiBidang extends CI_Controller
             $this->form_validation->set_rules('status_bidang', 'Status Bidang', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Prestasi  Bidang";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['bidang'] = $this->PrestasiBidang_model->getPrestasiBidangById($id);
 
@@ -99,7 +99,7 @@ class PrestasiBidang extends CI_Controller
     public function bidang_view($id)
     {
         $data['title'] = 'Detail Data Prestasi Bidang';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['bidang'] = $this->PrestasiBidang_model->getPrestasiBidangById($id);
 

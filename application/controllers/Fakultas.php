@@ -15,7 +15,7 @@ class Fakultas extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Fakultas";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['fakultas'] = $this->Fakultas_model->getFakultas();
 
@@ -37,7 +37,7 @@ class Fakultas extends CI_Controller
             $this->form_validation->set_rules('ket_fakultas', 'Keterangan fakultas', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Fakultas";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $this->load->view('template/header', $data);
                 $this->load->view('template/sidebar');
@@ -62,7 +62,7 @@ class Fakultas extends CI_Controller
             $this->form_validation->set_rules('ket_fakultas', 'Keterangan fakultas', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Fakultas";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['fakultas'] = $this->Fakultas_model->getFakultasById($id);
 
@@ -93,7 +93,7 @@ class Fakultas extends CI_Controller
     public function fakultas_view($id)
     {
         $data['title'] = 'Detail Data Fakultas';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
         $data['fakultas'] = $this->Fakultas_model->getFakultasById($id);
 
 

@@ -17,7 +17,7 @@ class User extends CI_Controller
     {
         $data['title'] = "Data User";
         //ngambil data user saat login
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['user'] = $this->User_model->getUser();
 
@@ -49,7 +49,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Tambah Data User";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
@@ -74,7 +74,7 @@ class User extends CI_Controller
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Edit Data User";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['user'] = $this->User_model->getUserById($id);
 
@@ -102,7 +102,7 @@ class User extends CI_Controller
     public function user_view($id)
     {
         $data['title'] = 'Detail Data User';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['user'] = $this->User_model->getUserById($id);
 

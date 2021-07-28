@@ -17,7 +17,7 @@ class Mahasiswa extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Mahasiswa";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswa();
 
@@ -52,7 +52,7 @@ class Mahasiswa extends CI_Controller
 
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Mahasiswa";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['prodi'] = $this->Prodi_model->getProdi();
 
@@ -91,7 +91,7 @@ class Mahasiswa extends CI_Controller
             $this->form_validation->set_rules('smt', 'Semester', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Mahasiswa";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['mhs'] = $this->Mahasiswa_model->getMahasiswaById($id);
                 $data['prodi'] = $this->Prodi_model->getProdi();
@@ -123,7 +123,7 @@ class Mahasiswa extends CI_Controller
     public function mahasiswa_view($id)
     {
         $data['title'] = 'Detail Data Mahasiswa';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
         $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
 
         $this->load->view('template/header', $data);

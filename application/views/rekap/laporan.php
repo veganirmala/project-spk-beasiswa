@@ -14,16 +14,21 @@
             font-family: Georgia, 'Times New Roman', Times, serif;
         }
 
-        table tr .text2 {
+        table th .text2 {
             text-align: left;
             font-size: 14px;
             font-family: Arial, Helvetica, sans-serif;
         }
 
-        table tr .text3 {
+        table th .text3 {
             text-align: right;
             font-size: 14px;
             font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .flex {
+            display: flex;
+            justify-content: space-between;
         }
     </style>
 </head>
@@ -96,16 +101,11 @@
                 </tbody>
             </table>
         </center>
-        <table>
-            <tr>
-                <td class="text2" align="left">Menyetujui,<br>Ketua<br><br><br>(Drs.lalala)<br>NIP.0775</td>
-            </tr>
-        </table>
-        <table>
-            <tr>
-                <td class="text3" align="right">Singaraja,<br>Staff Beasiswa<br><br><br>(Drs.lalala)<br>NIP.0775</td>
-            </tr>
-        </table>
+
+        <h6 class="flex">
+            <span class="text2" align="left">Menyetujui,<br>Ketua<br><br><br>(Drs.lalala)<br>NIP.0775</span>
+            <span class="text3" align="right">Singaraja,<?= date(' d-m-Y '); ?><br>Staff Beasiswa<br><br><br>(Drs.lalala)<br>NIP.0775</span>
+        </h6>
         <script type="text/javascript">
             window.print();
         </script>

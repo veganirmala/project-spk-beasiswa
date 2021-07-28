@@ -17,7 +17,7 @@ class Prestasi extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Prestasi";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['prestasi'] = $this->Prestasi_model->getPrestasi();
 
@@ -40,7 +40,7 @@ class Prestasi extends CI_Controller
             $this->form_validation->set_rules('nilai_prestasi', 'Nilai Prestasi', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Prestasi";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
@@ -68,7 +68,7 @@ class Prestasi extends CI_Controller
             $this->form_validation->set_rules('nilai_prestasi', 'Nilai Prestasi', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Prestasi";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['prestasi'] = $this->Prestasi_model->getPrestasiById($id);
                 $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
@@ -100,7 +100,7 @@ class Prestasi extends CI_Controller
     public function prestasi_view($id)
     {
         $data['title'] = 'Detail Data Prestasi';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['prestasi'] = $this->Prestasi_model->getPrestasiById($id);
 

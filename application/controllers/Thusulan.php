@@ -15,7 +15,7 @@ class Thusulan extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Tahun Usulan";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['usulan'] = $this->Thusulan_model->getUsulan();
 
@@ -39,7 +39,7 @@ class Thusulan extends CI_Controller
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Tahun Usulan";
 
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $this->load->view('template/header', $data);
                 $this->load->view('template/sidebar');
@@ -65,7 +65,7 @@ class Thusulan extends CI_Controller
             $this->form_validation->set_rules('status_usulan', 'Status Usulan', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Tahun Usulan";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['usulan'] = $this->Thusulan_model->getUsulanById($id);
 
@@ -96,7 +96,7 @@ class Thusulan extends CI_Controller
     public function usulan_view($id)
     {
         $data['title'] = 'Detail Data Tahun Usulan';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['usulan'] = $this->Thusulan_model->getUsulanById($id);
 

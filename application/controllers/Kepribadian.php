@@ -17,7 +17,7 @@ class Kepribadian extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Kepribadian";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['kepribadian'] = $this->Kepribadian_model->getKepribadian();
 
@@ -41,7 +41,7 @@ class Kepribadian extends CI_Controller
             $this->form_validation->set_rules('ipk', 'IPK', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Kepribadian";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
                 $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
@@ -70,9 +70,8 @@ class Kepribadian extends CI_Controller
             $this->form_validation->set_rules('ipk', 'IPK', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Kepribadian";
-                $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+                $data['user_email'] = $this->User_model->getEmail();
 
-                // $data['kepribadian'] = $this->db->get_where('tb_kepribadian', array('id_kepribadian' => $id))->row_array();
                 $data['kepribadian'] = $this->Kepribadian_model->getKepribadianById($id);
                 $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
@@ -103,7 +102,7 @@ class Kepribadian extends CI_Controller
     public function kepribadian_view($id)
     {
         $data['title'] = 'Detail Data kepribadian';
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['kepribadian'] = $this->Kepribadian_model->getKepribadianById($id);
 

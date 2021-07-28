@@ -17,7 +17,8 @@ class Rekap extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Rekap Hasil Seleksi";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            //ngambil data petugas yang login
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['rekap'] = $this->Rekap_model->getRekap();
 
@@ -36,7 +37,7 @@ class Rekap extends CI_Controller
     {
         $data['title'] = 'Data Rekap Hasil Seleksi';
         //ngambil data petugas yang login
-        $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+        $data['user_email'] = $this->User_model->getEmail();
 
         $data['rekap'] = $this->Rekap_model->getRekap();
 
@@ -50,8 +51,8 @@ class Rekap extends CI_Controller
     {
         if ($this->session->userdata('email')) {
             $data['title'] = "Data Rekap Hasil Seleksi";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
-
+            //ngambil data petugas yang login
+            $data['user_email'] = $this->User_model->getEmail();
             //ngambil data mahasiswa dengan inner join
             $datamahasiswa = $this->Rekap_model->getDataMhs();
 
