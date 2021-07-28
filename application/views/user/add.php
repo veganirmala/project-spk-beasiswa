@@ -38,14 +38,6 @@
             </select>
             <?= form_error('tipe', '<small class="text-danger pl-3">', '</small>'); ?>
         </div>
-        <div class="form-group">
-            <label for="status">Status</label>
-            <select class="form-control" tabindex="-1" aria-hidden="true" name="status" value="<?= set_value('status'); ?>">
-                <option value="Aktif">Aktif</option>
-                <option value="Tidak Aktif">Tidak Aktif</option>
-            </select>
-            <?= form_error('status', '<small class="text-danger pl-3">', '</small>'); ?>
-        </div>
         <button type="submit" value="Simpan" name="submit" class="btn btn-success btn-user">
             Simpan
         </button>

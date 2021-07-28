@@ -27,7 +27,6 @@
                                     <th>Nama User</th>
                                     <th>Jenis Kelamin</th>
                                     <th>Tipe</th>
-                                    <th>Status</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -45,7 +44,6 @@
                                         <td><?= $usr['nama']; ?></td>
                                         <td><?= $usr['jk_user']; ?></td>
                                         <td><?= $usr['tipe']; ?></td>
-                                        <td><?= $usr['status']; ?></td>
                                         <td>
                                             <a href="<?= base_url(); ?>user/user_view/<?= $usr['id_user']; ?>" class="btn btn-success" title="Detail Data"><i class="fas fa-info-circle"></i></a>
                                             <a href="<?= base_url(); ?>user/user_edit/<?= $usr['id_user']; ?>" class="btn btn-danger" title="Edit Data"><i class="fas fa-edit"></i></a>

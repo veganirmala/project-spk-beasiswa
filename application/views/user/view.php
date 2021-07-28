@@ -14,8 +14,6 @@
                     <p class="card-text"><?= $user['jk_user']; ?></p>
                     <h4 class="card-title">Tipe</h4>
                     <p class="card-text"><?= $user['tipe']; ?></p>
-                    <h4 class="card-title">Status</h4>
-                    <p class="card-text"><?= $user['status']; ?></p>
                 </div>
             </div>
         </div>
