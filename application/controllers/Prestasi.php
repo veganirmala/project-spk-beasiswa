@@ -70,7 +70,6 @@ class Prestasi extends CI_Controller
                 $data['title'] = "Edit Data Prestasi";
                 $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
 
-                // $data['prestasi'] = $this->db->get_where('tb_prestasi', array('id_prestasi' => $id))->row_array();
                 $data['prestasi'] = $this->Prestasi_model->getPrestasiById($id);
                 $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 

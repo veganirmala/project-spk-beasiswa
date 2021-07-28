@@ -87,7 +87,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama pengguna', 'required|trim');
         $this->form_validation->set_rules('jk_user', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('tipe', 'Tipe', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
+        //$this->form_validation->set_rules('status', 'Status', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
             'min_length' => 'Password to short!'
         ]);
@@ -106,7 +106,7 @@ class Auth extends CI_Controller
                 'jk_user' => $this->input->post('jk_user', true),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'tipe' => $this->input->post('tipe', true),
-                'status' => $this->input->post('status', true),
+                //'status' => $this->input->post('status', true),
                 'is_active' => 0,
                 'date_created' => time()
             ];
@@ -133,8 +133,8 @@ class Auth extends CI_Controller
         $config = [
             'protocol' => 'smtp',
             'smtp_host' => 'ssl://smtp.googlemail.com',
-            'smtp_user' => 'veganirmala08@gmail.com',
-            'smtp_pass' => '123456789',
+            'smtp_user' => 'saget7471@gmail.com',
+            'smtp_pass' => 'Fakeakungmail77',
             'smtp_port' => 465,
             'mailtype' => 'html',
             'charset' => 'utf-8',
@@ -144,7 +144,7 @@ class Auth extends CI_Controller
         $this->load->library('email', $config);
         $this->email->initialize($config);
 
-        $this->email->from('veganirmala08@gmail.com', 'Vega Nirmala');
+        $this->email->from('saget7471@gmail.com', 'Vega Nirmala');
         $this->email->to($this->input->post('email'));
 
         if ($type == 'verify') {
