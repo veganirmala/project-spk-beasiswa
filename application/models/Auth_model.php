@@ -24,15 +24,15 @@ class Auth_model extends CI_Model
                     $this->session->set_userdata($data);
                     redirect('Dashboard');
                 } else {
-                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Password Salah!</div>');
+                    $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Wrong Password!</div>');
                     redirect('auth');
                 }
             } else {
-                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email belum terdaftar!</div>');
+                $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> This Email has not been activated!</div>');
                 redirect('auth');
             }
         } else {
-            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email belum terdaftar!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert"> Email is not registered!</div>');
             redirect('auth');
         }
     }

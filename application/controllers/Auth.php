@@ -65,7 +65,7 @@ class Auth extends CI_Controller
     public function logout()
     {
         $this->session->unset_userdata('email');
-        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Anda Berhasil Logout!</div>');
+        $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> You have been logged out!</div>');
         redirect('auth');
     }
 
@@ -120,7 +120,7 @@ class Auth extends CI_Controller
             $this->_sendEmail($token, 'verify');
 
             //$this->User_model->addUser();
-            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Akun untuk login berhasil ditambahkan!</div>');
+            $this->session->set_flashdata('message', '<div class="alert alert-success" role="alert"> Congratulations! Your account has been created. Please activate your account!</div>');
             redirect('auth');
         }
     }
