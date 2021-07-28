@@ -100,6 +100,7 @@ class Jurusan extends CI_Controller
     {
         $data['title'] = 'Detail Data Jurusan';
         $data['user_email'] = $this->User_model->getEmail();
+
         $data['jurusan'] = $this->Jurusan_model->getJurusanById($id);
 
         $this->load->view('template/header', $data);

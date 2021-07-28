@@ -32,14 +32,12 @@ class User_model extends CI_Model
         $jk_user = $this->input->post('jk_user', true);
         $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
         $tipe = $this->input->post('tipe', true);
-        $status = $this->input->post('status', true);
         $data = [
             'email' => $email,
             'nama' => $nama,
             'jk_user' => $jk_user,
             'password' => $password,
-            'tipe' => $tipe,
-            'status' => $status
+            'tipe' => $tipe
         ];
         $this->db->insert('user', $data);
     }
@@ -51,15 +49,13 @@ class User_model extends CI_Model
         $jk_user = $this->input->post('jk_user', true);
         $password = $this->input->post('password');
         $tipe = $this->input->post('tipe', true);
-        $status = $this->input->post('status', true);
 
         if ($password == '') {
             $data = [
                 'email' => $email,
                 'nama' => $nama,
                 'jk_user' => $jk_user,
-                'tipe' => $tipe,
-                'status' => $status
+                'tipe' => $tipe
             ];
         } else {
             $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
@@ -68,8 +64,7 @@ class User_model extends CI_Model
                 'nama' => $nama,
                 'jk_user' => $jk_user,
                 'password' => $password,
-                'tipe' => $tipe,
-                'status' => $status
+                'tipe' => $tipe
             ];
         }
         $this->db->where('id_user', $this->input->post('id_user'));

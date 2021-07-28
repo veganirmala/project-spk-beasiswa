@@ -94,8 +94,8 @@ class Fakultas extends CI_Controller
     {
         $data['title'] = 'Detail Data Fakultas';
         $data['user_email'] = $this->User_model->getEmail();
-        $data['fakultas'] = $this->Fakultas_model->getFakultasById($id);
 
+        $data['fakultas'] = $this->Fakultas_model->getFakultasById($id);
 
         $this->load->view('template/header', $data);
         $this->load->view('template/sidebar');

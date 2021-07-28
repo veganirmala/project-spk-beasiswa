@@ -124,6 +124,7 @@ class Mahasiswa extends CI_Controller
     {
         $data['title'] = 'Detail Data Mahasiswa';
         $data['user_email'] = $this->User_model->getEmail();
+
         $data['mahasiswa'] = $this->Mahasiswa_model->getMahasiswaById($id);
 
         $this->load->view('template/header', $data);

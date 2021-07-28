@@ -42,11 +42,10 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama pengguna', 'required');
         $this->form_validation->set_rules('jk_user', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('tipe', 'Tipe', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Edit Profile";
-            $data['user_email'] = $this->db->get_where('tb_user', ['email' => $this->session->userdata('email')])->row_array();
+            $data['user_email'] = $this->User_model->getEmail();
 
             $data['user'] = $this->User_model->getUserById($id);
 
@@ -87,7 +86,6 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama pengguna', 'required|trim');
         $this->form_validation->set_rules('jk_user', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('tipe', 'Tipe', 'required');
-        //$this->form_validation->set_rules('status', 'Status', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
             'min_length' => 'Password to short!'
         ]);
@@ -106,7 +104,6 @@ class Auth extends CI_Controller
                 'jk_user' => $this->input->post('jk_user', true),
                 'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
                 'tipe' => $this->input->post('tipe', true),
-                //'status' => $this->input->post('status', true),
                 'is_active' => 0,
                 'date_created' => time()
             ];

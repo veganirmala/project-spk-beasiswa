@@ -73,7 +73,6 @@ class Prodi extends CI_Controller
                 $data['user_email'] = $this->User_model->getEmail();
 
                 $data['prodi'] = $this->Prodi_model->getProdiById($id);
-
                 $data['jurusan'] = $this->Jurusan_model->getJurusan();
 
                 $this->load->view('template/header', $data);

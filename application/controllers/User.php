@@ -42,7 +42,6 @@ class User extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama pengguna', 'required|trim');
         $this->form_validation->set_rules('jk_user', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('tipe', 'Tipe', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
         $this->form_validation->set_rules('password', 'Password', 'required|trim|min_length[3]', [
             'min_length' => 'Password to short!'
         ]);
@@ -70,7 +69,6 @@ class User extends CI_Controller
         $this->form_validation->set_rules('nama', 'Nama pengguna', 'required');
         $this->form_validation->set_rules('jk_user', 'Jenis Kelamin', 'required');
         $this->form_validation->set_rules('tipe', 'Tipe', 'required');
-        $this->form_validation->set_rules('status', 'Status', 'required');
 
         if ($this->form_validation->run() == false) {
             $data['title'] = "Edit Data User";
