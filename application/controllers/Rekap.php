@@ -128,7 +128,8 @@ class Rekap extends CI_Controller
 
             //select dulu data dari tabel kriteria dan tabel mahasiswa
             $qr = "SELECT kriteria.nim, kriteria.kriteria_ip, kriteria.kriteria_pribadi, kriteria.kriteria_prestasi,
-            kriteria.kriteria_ekonomi FROM kriteria INNER JOIN tb_mahasiswa ON kriteria.nim = tb_mahasiswa.nim";
+            kriteria.kriteria_ekonomi FROM kriteria INNER JOIN tb_mahasiswa ON kriteria.nim = tb_mahasiswa.nim
+            ORDER BY tb_mahasiswa.nim ASC";
             $alternatif = $this->db->query($qr)->result_array();
 
             //simpan semua data mahasiswa bentuk array
@@ -144,6 +145,8 @@ class Rekap extends CI_Controller
                 //echo json_encode($nilai);
             }
             //coba cetak nilai mahasiswa dalam array
+            // echo json_encode($this->nilai[0][0]);
+            // echo '<br>';
             // echo json_encode($this->nilai[0][1]);
             // echo '<br>';
             // echo json_encode($this->nilai[0][2]);
@@ -184,10 +187,11 @@ class Rekap extends CI_Controller
             }
             //}
             // echo "Nilai dari Kriteria";
+            // echo json_encode($this->nilai[0][0]);
             // echo json_encode($this->penilaian);
             // //batas tiap mahasiswa
             // echo "<br>";
-            //}
+            // //}
 
             //Nilai Bobot Persentase Per Kriteria
             $w = [35, 25, 30, 10];
@@ -199,6 +203,7 @@ class Rekap extends CI_Controller
             $this->normalisasi[3] = $w[3] * $this->penilaian[4];
 
             // echo "Nilai Normalisasi";
+            // echo json_encode($this->nilai[0][0]);
             // echo json_encode($this->normalisasi);
             // //batas tiap mahasiswa
             // echo "<br>";
@@ -208,14 +213,15 @@ class Rekap extends CI_Controller
 
             // echo "Nilai Skor Akhir";
             // echo "<br>";
+            // echo json_encode($this->nilai[0][0]);
             // echo json_encode($this->total);
             // //batas tiap mahasiswa
             // echo "<br>";
 
             //buat if status nilai akhir
-            if ($this->total >= 80) {
+            if ($this->total >= 85) {
                 $status = 'Sangat Layak';
-            } else if ($this->total >= 50) {
+            } else if ($this->total >= 75) {
                 $status = 'Layak';
             } else {
                 $status = 'Tidak Layak';
@@ -224,7 +230,7 @@ class Rekap extends CI_Controller
             //ambil id usulan yang aktif, jika mau cek tahun usulan yang berbeda edit dulu status tahun usulan di menu tahun usulan
             $id_usulan_aktif = $this->Rekap_model->getIDUsulan()['id_usulan'];
 
-            //simpan ke tabel rekap
+            // //simpan ke tabel rekap
             $datarekap = [
                 'id_usulan' => $id_usulan_aktif,
                 'nim' => $nim,
