@@ -10,6 +10,7 @@ class Rekap extends CI_Controller
         parent::__construct();
         is_logged_in();
         $this->load->model('Rekap_model');
+        $this->load->model('Thusulan_model');
     }
 
     //menampilkan seluruh data rekap
@@ -19,6 +20,9 @@ class Rekap extends CI_Controller
             $data['title'] = "Data Rekap Hasil Seleksi";
             //ngambil data petugas yang login
             $data['user_email'] = $this->User_model->getEmail();
+
+            //ngambil data tahun usulan aktif
+            $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
             $data['rekap'] = $this->Rekap_model->getRekap();
 
@@ -53,8 +57,12 @@ class Rekap extends CI_Controller
             $data['title'] = "Data Rekap Hasil Seleksi";
             //ngambil data petugas yang login
             $data['user_email'] = $this->User_model->getEmail();
+
             //ngambil data mahasiswa dengan inner join
             $datamahasiswa = $this->Rekap_model->getDataMhs();
+
+            //ngambil data tahun usulan aktif
+            $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
             //kosongin tabel data rekap 
             $this->db->truncate('tb_rekap');

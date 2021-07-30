@@ -10,6 +10,7 @@ class Auth extends CI_Controller
         $this->load->model('User_model');
     }
 
+    //menampilkan form login
     public function index()
     {
         if ($this->session->userdata('email')) {
@@ -25,6 +26,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/login');
             $this->load->view('auth/auth_footer');
         } else {
+            //memanggil fuction _login
             $this->_login();
         }
     }
@@ -61,7 +63,7 @@ class Auth extends CI_Controller
         }
     }
 
-    //untuk logout
+    //digunakan untuk logout
     public function logout()
     {
         $this->session->unset_userdata('email');
@@ -78,7 +80,7 @@ class Auth extends CI_Controller
         $this->form_validation->set_rules(
             'email',
             'Email',
-            'required|trim|valid_email|is_unique[tb_user.email]',
+            'required|trim|valid_email|is_unique[user.email]',
             [
                 'is_unique' => 'This email has already registered!'
             ]
@@ -97,6 +99,7 @@ class Auth extends CI_Controller
             $this->load->view('auth/registration', $data);
             $this->load->view('auth/auth_footer');
         } else {
+            //ambil inputan di form registration
             $email = $this->input->post('email', true);
             $data = [
                 'email' => $email,
@@ -114,9 +117,11 @@ class Auth extends CI_Controller
                 'token' => $token,
                 'date_created' => time()
             ];
+            //simpan ke tabel user dan user token
             $this->db->insert('user', $data);
             $this->db->insert('user_token', $user_token);
 
+            //memanggil function sendEmail dengan parameternya
             $this->_sendEmail($token, 'verify');
 
             //$this->User_model->addUser();
@@ -125,6 +130,7 @@ class Auth extends CI_Controller
         }
     }
 
+    //function untuk send ke email
     private function _sendEmail($token, $type)
     {
         $config = [
@@ -144,10 +150,13 @@ class Auth extends CI_Controller
         $this->email->from('saget7471@gmail.com', 'Vega Nirmala');
         $this->email->to($this->input->post('email'));
 
+        //ketika tipe verify maka akan mengirimkan pesan berikut ini
         if ($type == 'verify') {
             $this->email->subject('Account Verification');
             $this->email->message('Click this link to verify your account :<br><a href="' . base_url() . 'auth/verify?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Activate</a>');
-        } else if ($type == 'forgot') {
+        }
+        //ketika tipe forgot password akan mengirimkan pesan berikut ini
+        else if ($type == 'forgot') {
             $this->email->subject('Reset Password');
             $this->email->message('Click this link to reset your password :<br><a href="' . base_url() . 'auth/resetpassword?email=' . $this->input->post('email') . '&token=' . urlencode($token) . '">Reset Password</a>');
         }
