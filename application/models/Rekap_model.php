@@ -26,6 +26,8 @@ class Rekap_model extends CI_Model
         INNER JOIN tb_prestasi ON tb_mahasiswa.nim = tb_prestasi.nim
         INNER JOIN tb_kepribadian ON tb_mahasiswa.nim = tb_kepribadian.nim
         INNER JOIN tb_prodi ON tb_mahasiswa.id_prodi = tb_prodi.id_prodi
+        INNER JOIN tb_tahun_usulan ON tb_mahasiswa.id_usulan = tb_tahun_usulan.id_usulan
+        WHERE tb_tahun_usulan.status_usulan = 'Aktif'
         ORDER BY tb_mahasiswa.nim ASC";
 
         return $this->db->query($qr)->result_array();
