@@ -21,6 +21,7 @@
                         <br>
                         <input type="radio" id="perempuan" name="jk_mhs" value="Perempuan" <?php if ($mhs['jk_mhs'] == 'Perempuan') echo 'checked' ?>>
                         <label>Perempuan</label>
+                        <br>
                         <tr><input type="radio" id="laki-laki" name="jk_mhs" value="Laki-laki" <?php if ($mhs['jk_mhs'] == 'Laki-laki') echo 'checked' ?>>
                             <label>Laki-laki</label>
                         </tr>

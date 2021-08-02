@@ -20,6 +20,7 @@
                         <br>
                         <input type="radio" id="perempuan" name="jk_mhs" value="Perempuan" <?php echo set_radio('jk_mhs', 'Perempuan', TRUE); ?>>
                         <label>Perempuan</label>
+                        <br>
                         <tr><input type="radio" id="laki-laki" name="jk_mhs" value="Laki-laki" <?php echo set_radio('jk_mhs', 'Laki-laki', TRUE); ?>>
                             <label>Laki-laki</label>
                         </tr>
