@@ -20,8 +20,8 @@ class Mahasiswa_model extends CI_Model
     public function getMahasiswaById($id)
     {
         $query = "SELECT * FROM tb_mahasiswa
-        INNER JOIN tb_prodi
-        ON tb_prodi.id_prodi = tb_mahasiswa.id_prodi
+        INNER JOIN tb_prodi ON tb_prodi.id_prodi = tb_mahasiswa.id_prodi
+        INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_mahasiswa.id_usulan
         WHERE nim = $id";
 
         return $this->db->query($query)->row_array();
@@ -44,6 +44,7 @@ class Mahasiswa_model extends CI_Model
         $bank_nama = $this->input->post('bank_nama', true);
         $bank_norek = $this->input->post('bank_norek', true);
         $smt = $this->input->post('smt', true);
+        $id_usulan = $this->input->post('id_usulan', true);
         $data = [
             'nim' => $nim,
             'nama_mhs' => $nama_mhs,
@@ -58,7 +59,8 @@ class Mahasiswa_model extends CI_Model
             'ortu_nohp' => $ortu_nohp,
             'bank_nama' => $bank_nama,
             'bank_norek' => $bank_norek,
-            'smt' => $smt
+            'smt' => $smt,
+            'id_usulan' => $id_usulan
         ];
         $this->db->insert('tb_mahasiswa', $data);
     }
@@ -80,6 +82,7 @@ class Mahasiswa_model extends CI_Model
         $bank_nama = $this->input->post('bank_nama', true);
         $bank_norek = $this->input->post('bank_norek', true);
         $smt = $this->input->post('smt', true);
+        $id_usulan = $this->input->post('id_usulan', true);
         $data = [
             'nama_mhs' => $nama_mhs,
             'jk_mhs' => $jk_mhs,
@@ -93,7 +96,8 @@ class Mahasiswa_model extends CI_Model
             'ortu_nohp' => $ortu_nohp,
             'bank_nama' => $bank_nama,
             'bank_norek' => $bank_norek,
-            'smt' => $smt
+            'smt' => $smt,
+            'id_usulan' => $id_usulan
         ];
         $this->db->where('nim', $nim);
         $this->db->update('tb_mahasiswa', $data);

@@ -10,6 +10,7 @@ class Mahasiswa extends CI_Controller
         is_logged_in();
         $this->load->model('Mahasiswa_model');
         $this->load->model('Prodi_model');
+        $this->load->model('Thusulan_model');
     }
 
     //menampilkan data mahasiswa
@@ -49,12 +50,15 @@ class Mahasiswa extends CI_Controller
             $this->form_validation->set_rules('bank_nama', 'Nama BANK', 'required');
             $this->form_validation->set_rules('bank_norek', 'No Rekening BANK', 'required');
             $this->form_validation->set_rules('smt', 'Semester', 'required');
+            $this->form_validation->set_rules('id_usulan', 'Tahun Usulan', 'required');
 
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Tambah Data Mahasiswa";
                 $data['user_email'] = $this->User_model->getEmail();
 
                 $data['prodi'] = $this->Prodi_model->getProdi();
+
+                $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
                 $this->load->view('template/header', $data);
                 $this->load->view('template/sidebar');
@@ -89,13 +93,14 @@ class Mahasiswa extends CI_Controller
             $this->form_validation->set_rules('bank_nama', 'Nama BANK', 'required');
             $this->form_validation->set_rules('bank_norek', 'No Rekening BANK', 'required');
             $this->form_validation->set_rules('smt', 'Semester', 'required');
+            $this->form_validation->set_rules('id_usulan', 'Tahun Usulan', 'required');
             if ($this->form_validation->run() == false) {
                 $data['title'] = "Edit Data Mahasiswa";
                 $data['user_email'] = $this->User_model->getEmail();
 
                 $data['mhs'] = $this->Mahasiswa_model->getMahasiswaById($id);
                 $data['prodi'] = $this->Prodi_model->getProdi();
-
+                $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
                 $this->load->view('template/header', $data);
                 $this->load->view('template/sidebar');
                 $this->load->view('template/topbar', $data);

@@ -101,6 +101,15 @@
                         </select>
                         <?= form_error('smt', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
+                    <div class="form-group">
+                        <label for="id_usulan">Tahun Usulan</label>
+                        <select class="form-control" tabindex="-1" aria-hidden="true" name="id_usulan" value="<?= set_value('id_usulan'); ?>">
+                            <?php foreach ($thusulan as $th) : ?>
+                                <option value="<?php echo $th['id_usulan']; ?>"><?php echo $th['tahun']; ?></option>
+                            <?php endforeach; ?>
+                        </select>
+                        <?= form_error('id_usulan', '<small class="text-danger pl-3">', '</small>'); ?>
+                    </div>
                 </div>
             </div>
             <!-- akhir kolom 2 -->
