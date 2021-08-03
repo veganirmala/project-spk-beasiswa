@@ -36,6 +36,34 @@ class Rekap extends CI_Controller
         }
     }
 
+    //menampilkan data rekap sesuai tahun yang dipilih dicombo box
+    public function cari_tahun()
+    {
+        if ($this->session->userdata('email')) {
+            $data['title'] = "Data Rekap Hasil Seleksi";
+            //ngambil data petugas yang login
+            $data['user_email'] = $this->User_model->getEmail();
+
+            //ngambil data tahun usulan aktif
+            $strcari = $this->input->post('th');
+            $qr = "SELECT * FROM tb_rekap 
+            INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
+            INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
+            WHERE tb_tahun_usulan.tahun = '" . $strcari . "'";
+
+            $data['rekap'] = $this->db->query($qr)->result_array();
+            $data['thusulan'] = $this->Rekap_model->getDataTahunUsulan();
+
+            $this->load->view('template/header', $data);
+            $this->load->view('template/sidebar');
+            $this->load->view('template/topbar', $data);
+            $this->load->view('rekap/index', $data);
+            $this->load->view('template/footer');
+        } else {
+            redirect('auth');
+        }
+    }
+
     //melakukan cetak untuk laporan
     public function cetak_rekap()
     {

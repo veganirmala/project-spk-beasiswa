@@ -34,6 +34,14 @@ class Rekap_model extends CI_Model
         return $this->db->query($qr)->result_array();
     }
 
+    public function getDataTahunUsulan()
+    {
+        $qr = "SELECT * FROM tb_tahun_usulan 
+        GROUP BY tahun";
+
+        return $this->db->query($qr)->result_array();
+    }
+
     public function hitungRekap()
     {
         $query = $this->db->get('tb_rekap');

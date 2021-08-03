@@ -15,15 +15,21 @@
                 <div class="card-header py-3">
                     <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
                     <!-- tampilin tahun usulan aktif -->
-                    <!-- <div class="form-group">
-                        <label for="id_usulan">Tahun Usulan</label>
-                        <select class="form-control" tabindex="-1" aria-hidden="true" name="id_usulan" value="<?= set_value('id_usulan'); ?>">
-                            <?php foreach ($thusulan as $th) : ?>
-                                <option value="<?php echo $th['id_usulan']; ?>"><?php echo $th['tahun']; ?></option>
-                            <?php endforeach; ?>
-                        </select>
-                        <?= form_error('id_usulan', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div> -->
+                    <div class="form-group">
+                        <form action="<?php echo base_url() . 'rekap/cari_tahun'; ?>" class="form-inline my-2 my-lg-0" method="post">
+                            <select name="th" class="custom-select mr-1" id="inputGroupSelect04" aria-label="Example select with button addon">
+                                <option selected>Pilih Tahun Usulan</option>
+                                <?php foreach ($thusulan as $th) { ?>
+                                    <option value="<?= $th['tahun']; ?>"><?= $th['tahun']; ?></option>
+
+                                <?php } ?>
+                            </select>
+                            <?= form_error('id_usulan', '<small class="text-danger pl-3">', '</small>'); ?>
+                            <div class="input-group">
+                                <button class="btn btn-secondary" type="submit">Cari</button>
+                            </div>
+                        </form>
+                    </div>
                     <a href="<?= base_url('rekap/rekap_sinkron'); ?>" class="btn btn-primary" title="Sinkronisasi Data"><i class="fas fa-spinner"></i> Sinkronisasi</a>
                     <a href="<?= base_url('rekap/cetak_rekap'); ?>" class="btn btn-info" title="Cetak Data"><i class="fas fa-file-download"></i> Cetak</a>
                     <?php echo $this->session->flashdata('message'); ?>
