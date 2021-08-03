@@ -52,6 +52,7 @@ class Rekap extends CI_Controller
              WHERE tb_tahun_usulan.tahun = '" . $strcari . "'";
 
             $data['rekap'] = $this->db->query($qr)->result_array();
+            //$data['rekap'] = $this->Rekap_model->getRekap();
             $data['thusulan'] = $this->Rekap_model->getDataTahunUsulan();
 
             $this->load->view('template/header', $data);
