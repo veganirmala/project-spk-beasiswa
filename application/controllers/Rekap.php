@@ -44,16 +44,17 @@ class Rekap extends CI_Controller
             //ngambil data petugas yang login
             $data['user_email'] = $this->User_model->getEmail();
 
+            $data['thusulan'] = $this->Rekap_model->getDataTahunUsulan();
+
             //ngambil data tahun usulan aktif
             $strcari = $this->input->post('th');
             $qr = "SELECT * FROM tb_rekap 
-             INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
-             INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
-             WHERE tb_tahun_usulan.tahun = '" . $strcari . "'";
+            INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
+            INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
+            WHERE tb_tahun_usulan.tahun = '" . $strcari . "'";
 
             $data['rekap'] = $this->db->query($qr)->result_array();
             //$data['rekap'] = $this->Rekap_model->getRekap();
-            $data['thusulan'] = $this->Rekap_model->getDataTahunUsulan();
 
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
