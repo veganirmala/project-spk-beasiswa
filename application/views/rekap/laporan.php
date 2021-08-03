@@ -103,8 +103,9 @@
         </center>
 
         <h6 class="flex">
-            <span class="text2" align="left">Menyetujui,<br>Ketua<br><br><br>(Drs.lalala)<br>NIP.0775</span>
-            <span class="text3" align="right">Singaraja,<?= date(' d-m-Y '); ?><br>Staff Beasiswa<br><br><br>(Drs.lalala)<br>NIP.0775</span>
+            <!-- <span class="text2" align="left">Menyetujui,<br>a/n Dekan<br><br><br>Cokorda Istri Raka Marsiti, S.Pd., M.Pd.<br>NIP. 197103031997032001</span> -->
+            <!-- <span class="text3" align="right">Singaraja,<?= date(' d-m-Y '); ?><br>a/n Dekan<br>Wakil Dekan III,<br><br>Cokorda Istri Raka Marsiti, S.Pd., M.Pd.<br>NIP. 197103031997032001</span> -->
+            <span class="text2" align="left">Singaraja,<?= date(' d-m-Y '); ?><br>a/n Dekan<br>Wakil Dekan III,<br><br><br><br>Cokorda Istri Raka Marsiti, S.Pd., M.Pd.<br>NIP. 197103031997032001</span>
         </h6>
         <script type="text/javascript">
             window.print();
