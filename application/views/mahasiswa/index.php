@@ -27,6 +27,7 @@
                                     <th>Nama Mahasiswa</th>
                                     <th>Program Studi</th>
                                     <th>Semester</th>
+                                    <th>Tahun Usulan</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
@@ -44,6 +45,7 @@
                                         <td><?= $mhs['nama_mhs']; ?></td>
                                         <td><?= $mhs['nama_prodi']; ?></td>
                                         <td><?= $mhs['smt']; ?></td>
+                                        <td><?= $mhs['tahun']; ?></td>
                                         <td>
                                             <a href="<?= base_url(); ?>mahasiswa/mahasiswa_view/<?= $mhs['nim']; ?>" class="btn btn-success" title="Detail Data"><i class="fas fa-info-circle"></i></a>
                                             <a href="<?= base_url(); ?>mahasiswa/mahasiswa_edit/<?= $mhs['nim']; ?>" class="btn btn-danger" title="Edit Data"><i class="fas fa-edit"></i></a>

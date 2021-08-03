@@ -10,9 +10,10 @@ class Mahasiswa_model extends CI_Model
 
     public function getMahasiswa()
     {
-        $query = "SELECT * FROM tb_mahasiswa INNER JOIN tb_prodi ON
-                tb_prodi.id_prodi = tb_mahasiswa.id_prodi
-                ORDER BY nim ASC";
+        $query = "SELECT * FROM tb_mahasiswa 
+        INNER JOIN tb_prodi ON tb_prodi.id_prodi = tb_mahasiswa.id_prodi
+        INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_mahasiswa.id_usulan
+        ORDER BY nim ASC";
 
         return $this->db->query($query)->result_array();
     }
