@@ -65,7 +65,11 @@ class Rekap extends CI_Controller
             $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
             //kosongin tabel data rekap 
-            $this->db->truncate('tb_rekap');
+            //$this->db->truncate('tb_rekap');
+
+            //kosongin tabel rekap sesuai id usulan yang aktif
+            $id_aktif = $this->db->get_where('tb_tahun_usulan', ['status_usulan' => "Aktif"])->row_array();
+            $this->db->delete('tb_rekap', array('id_usulan' => $id_aktif['id_usulan']));
 
             //panggil function datamahasiswa
             $this->run($datamahasiswa);
