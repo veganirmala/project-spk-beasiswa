@@ -42,6 +42,8 @@
                         <p class="card-text"><?= $mahasiswa['bank_norek']; ?></p>
                         <h4 class="card-title">Semester</h4>
                         <p class="card-text"><?= $mahasiswa['smt']; ?></p>
+                        <h4 class="card-title">Tahun Usulan</h4>
+                        <p class="card-text"><?= $mahasiswa['tahun']; ?></p>
                     </div>
                 </div>
             </div>
