@@ -57,6 +57,18 @@ class Rekap_model extends CI_Model
         $this->db->insert('tb_rekap', $datarekap);
     }
 
+    public function getDataRekap()
+    {
+        $strcari = $this->input->post('th');
+        $qr = "SELECT * FROM tb_rekap 
+            INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
+            INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
+            WHERE tb_tahun_usulan.tahun = $strcari 
+            ORDER BY tb_rekap.skor_total DESC";
+
+        return $this->db->query($qr)->result_array();
+    }
+
     public function hitungRekap()
     {
         $query = $this->db->get('tb_rekap');

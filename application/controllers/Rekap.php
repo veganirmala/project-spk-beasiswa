@@ -47,15 +47,7 @@ class Rekap extends CI_Controller
             $data['thusulan'] = $this->Rekap_model->getDataTahunUsulan();
 
             //ngambil data tahun usulan aktif
-            $strcari = $this->input->post('th');
-            $qr = "SELECT * FROM tb_rekap 
-            INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
-            INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
-            WHERE tb_tahun_usulan.tahun = $strcari 
-            ORDER BY tb_rekap.skor_total DESC";
-
-            $data['rekap'] = $this->db->query($qr)->result_array();
-            //$data['rekap'] = $this->Rekap_model->getRekap();
+            $data['rekap'] = $this->Rekap_model->getDataRekap();
 
             $this->load->view('template/header', $data);
             $this->load->view('template/sidebar');
