@@ -51,7 +51,8 @@ class Rekap extends CI_Controller
             $qr = "SELECT * FROM tb_rekap 
             INNER JOIN tb_mahasiswa ON tb_mahasiswa.nim = tb_rekap.nim
             INNER JOIN tb_tahun_usulan ON tb_tahun_usulan.id_usulan = tb_rekap.id_usulan
-            WHERE tb_tahun_usulan.tahun = '" . $strcari . "'";
+            WHERE tb_tahun_usulan.tahun = $strcari 
+            ORDER BY tb_rekap.skor_total DESC";
 
             $data['rekap'] = $this->db->query($qr)->result_array();
             //$data['rekap'] = $this->Rekap_model->getRekap();
@@ -273,17 +274,7 @@ class Rekap extends CI_Controller
             $id_usulan_aktif = $this->Rekap_model->getIDUsulan()['id_usulan'];
 
             // //simpan ke tabel rekap
-            $datarekap = [
-                'id_usulan' => $id_usulan_aktif,
-                'nim' => $nim,
-                'skor_ip' => $skor_ipk,
-                'skor_prestasi' => $skor_prestasi,
-                'skor_ekonomi' => $skor_ekonomi,
-                'skor_pribadi' => $skor_pribadi,
-                'skor_total' => $this->total,
-                'status' => $status
-            ];
-            $this->db->insert('tb_rekap', $datarekap);
+            $this->Rekap_model->addRekap($id_usulan_aktif, $nim, $skor_ipk, $skor_prestasi, $skor_ekonomi, $skor_pribadi, $this->total, $status);
         }
     }
 

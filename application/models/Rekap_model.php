@@ -42,6 +42,21 @@ class Rekap_model extends CI_Model
         return $this->db->query($qr)->result_array();
     }
 
+    public function addRekap($id_usulan_aktif, $nim, $skor_ipk, $skor_prestasi, $skor_ekonomi, $skor_pribadi, $total, $status)
+    {
+        $datarekap = [
+            'id_usulan' => $id_usulan_aktif,
+            'nim' => $nim,
+            'skor_ip' => $skor_ipk,
+            'skor_prestasi' => $skor_prestasi,
+            'skor_ekonomi' => $skor_ekonomi,
+            'skor_pribadi' => $skor_pribadi,
+            'skor_total' => $total,
+            'status' => $status
+        ];
+        $this->db->insert('tb_rekap', $datarekap);
+    }
+
     public function hitungRekap()
     {
         $query = $this->db->get('tb_rekap');

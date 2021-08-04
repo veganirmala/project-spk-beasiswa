@@ -21,7 +21,7 @@
         }
 
         table th .text3 {
-            text-align: right;
+            text-align: left;
             font-size: 14px;
             font-family: Arial, Helvetica, sans-serif;
         }
@@ -103,9 +103,9 @@
         </center>
 
         <h6 class="flex">
-            <!-- <span class="text2" align="left">Menyetujui,<br>a/n Dekan<br><br><br>Cokorda Istri Raka Marsiti, S.Pd., M.Pd.<br>NIP. 197103031997032001</span> -->
+            <span class="text2" align="left"></span>
             <!-- <span class="text3" align="right">Singaraja,<?= date(' d-m-Y '); ?><br>a/n Dekan<br>Wakil Dekan III,<br><br>Cokorda Istri Raka Marsiti, S.Pd., M.Pd.<br>NIP. 197103031997032001</span> -->
-            <span class="text2" align="left">Singaraja,<?= date(' d-m-Y '); ?><br>a/n Dekan<br>Wakil Dekan III,<br><br><br><br>Cokorda Istri Raka Marsiti, S.Pd., M.Pd.<br>NIP. 197103031997032001</span>
+            <span class="text3" align="left">Singaraja,<?= date(' d-m-Y '); ?><br>a/n Dekan<br>Wakil Dekan III,<br><br><br><br>Cokorda Istri Raka Marsiti, S.Pd., M.Pd.<br>NIP. 197103031997032001</span>
         </h6>
         <script type="text/javascript">
             window.print();
