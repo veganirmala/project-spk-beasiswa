@@ -42,11 +42,9 @@ class Mahasiswa extends CI_Controller
             $this->form_validation->set_rules('no_hp_mhs', 'No HP Mahasiswa', 'required');
             $this->form_validation->set_rules('alamat_mhs', 'Alamat Mahasiswa', 'required');
             $this->form_validation->set_rules('id_prodi', 'Nama Prodi', 'required');
-            $this->form_validation->set_rules('ortu_nama', 'Nama Orang Tua', 'required');
             $this->form_validation->set_rules('ortu_pekerjaan', 'Pekerjaan Orang Tua', 'required');
             $this->form_validation->set_rules('ortu_penghasilan', 'Penghasilan Orang Tua', 'required');
             $this->form_validation->set_rules('ortu_tanggungan', 'Tanggungan Orang Tua', 'required');
-            $this->form_validation->set_rules('ortu_nohp', 'No HP Orang Tua', 'required');
             $this->form_validation->set_rules('bank_nama', 'Nama BANK', 'required');
             $this->form_validation->set_rules('bank_norek', 'No Rekening BANK', 'required');
             $this->form_validation->set_rules('smt', 'Semester', 'required');
@@ -85,11 +83,9 @@ class Mahasiswa extends CI_Controller
             $this->form_validation->set_rules('no_hp_mhs', 'No HP Mahasiswa', 'required');
             $this->form_validation->set_rules('alamat_mhs', 'Alamat Mahasiswa', 'required');
             $this->form_validation->set_rules('id_prodi', 'Nama Prodi', 'required');
-            $this->form_validation->set_rules('ortu_nama', 'Nama Orang Tua', 'required');
             $this->form_validation->set_rules('ortu_pekerjaan', 'Pekerjaan Orang Tua', 'required');
             $this->form_validation->set_rules('ortu_penghasilan', 'Penghasilan Orang Tua', 'required');
             $this->form_validation->set_rules('ortu_tanggungan', 'Tanggungan Orang Tua', 'required');
-            $this->form_validation->set_rules('ortu_nohp', 'No HP Orang Tua', 'required');
             $this->form_validation->set_rules('bank_nama', 'Nama BANK', 'required');
             $this->form_validation->set_rules('bank_norek', 'No Rekening BANK', 'required');
             $this->form_validation->set_rules('smt', 'Semester', 'required');

@@ -48,11 +48,6 @@
                         </select>
                         <?= form_error('id-prodi', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
-                    <div class="form-group">
-                        <label for="ortu_nama">Nama Orang Tua</label>
-                        <input type="text" name="ortu_nama" class="form-control" id="ortu_nama" placeholder="Nama Orang Tua" value="<?= (set_value('ortu_nama')) ? set_value('ortu_nama') : $mhs['ortu_nama']; ?>">
-                        <?= form_error('ortu_nama', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
                 </div>
             </div>
             <!-- akhir kolom 1 -->
@@ -73,11 +68,6 @@
                         <label for="ortu_tanggungan">Tanggungan Orang Tua<span style="color:red;">*</span></label>
                         <input type="text" name="ortu_tanggungan" class="form-control" id="ortu_tanggungan" placeholder="Tanggungan Orang Tua" value="<?= (set_value('ortu_tanggungan')) ? set_value('ortu_tanggungan') : $mhs['ortu_tanggungan']; ?>">
                         <?= form_error('ortu_tanggungan', '<small class="text-danger pl-3">', '</small>'); ?>
-                    </div>
-                    <div class="form-group">
-                        <label for="ortu_nohp">No HP Orang Tua</label>
-                        <input type="text" name="ortu_nohp" class="form-control" id="ortu_nohp" placeholder="No HP Orang Tua" value="<?= (set_value('ortu_nohp')) ? set_value('ortu_nohp') : $mhs['ortu_nohp']; ?>">
-                        <?= form_error('ortu_nohp', '<small class="text-danger pl-3">', '</small>'); ?>
                     </div>
                     <div class="form-group">
                         <label for="bank_nama">Nama Bank</label>
@@ -161,12 +151,5 @@
         var number_string = this.value.replace(/[^,\d]/g, '').toString()
         //gunakan fungsi formatnotelp() untuk mengubah angka yang diketik menjadi format angka
         notelp.value = number_string;
-    });
-
-    var notelportu = document.getElementById('ortu_nohp');
-    notelportu.addEventListener('keyup', function(e) {
-        var number_string = this.value.replace(/[^,\d]/g, '').toString()
-        //gunakan fungsi formatnotelportu() untuk mengubah angka yang diketik menjadi format angka
-        notelportu.value = number_string;
     });
 </script>

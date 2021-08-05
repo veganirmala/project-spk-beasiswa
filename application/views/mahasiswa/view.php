@@ -18,8 +18,6 @@
                         <p class="card-text"><?= $mahasiswa['alamat_mhs']; ?></p>
                         <h4 class="card-title">Nama Prodi</h4>
                         <p class="card-text"><?= $mahasiswa['nama_prodi']; ?></p>
-                        <h4 class="card-title">Nama Orang Tua</h4>
-                        <p class="card-text"><?= $mahasiswa['ortu_nama']; ?></p>
                     </div>
                 </div>
             </div>
@@ -34,8 +32,6 @@
                         <p class="card-text"><?= "Rp " . number_format($mahasiswa['ortu_penghasilan']); ?></p>
                         <h4 class="card-title">Tanggungan Orang Tua</h4>
                         <p class="card-text"><?= $mahasiswa['ortu_tanggungan']; ?></p>
-                        <h4 class="card-title">No HP Orang Tua</h4>
-                        <p class="card-text"><?= $mahasiswa['ortu_nohp']; ?></p>
                         <h4 class="card-title">Nama Bank</h4>
                         <p class="card-text"><?= $mahasiswa['bank_nama']; ?></p>
                         <h4 class="card-title">No Rekening Bank</h4>
