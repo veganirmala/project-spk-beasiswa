@@ -24,6 +24,7 @@ class Rekap extends CI_Controller
             //ngambil data tahun usulan aktif
             $data['thusulan'] = $this->Thusulan_model->getStatusTahunUsulanById();
 
+            //ngambil data mahasiswa
             $data['rekap'] = $this->Rekap_model->getRekap();
 
             $this->load->view('template/header', $data);
@@ -44,9 +45,10 @@ class Rekap extends CI_Controller
             //ngambil data petugas yang login
             $data['user_email'] = $this->User_model->getEmail();
 
+            //ngambil data tahun usulan aktif
             $data['thusulan'] = $this->Rekap_model->getDataTahunUsulan();
 
-            //ngambil data tahun usulan aktif
+            //ngambil data mahasiswa berdasarkan tahun usulan aktif
             $data['rekap'] = $this->Rekap_model->getDataRekap();
 
             $this->load->view('template/header', $data);
@@ -66,6 +68,7 @@ class Rekap extends CI_Controller
         //ngambil data petugas yang login
         $data['user_email'] = $this->User_model->getEmail();
 
+        //ngambil data mahasiswa berdasarkan tahun usulan yang aktif
         $data['rekap'] = $this->Rekap_model->getRekap();
 
         $this->load->view('template/header', $data);
@@ -265,7 +268,7 @@ class Rekap extends CI_Controller
             //ambil id usulan yang aktif, jika mau cek tahun usulan yang berbeda edit dulu status tahun usulan di menu tahun usulan
             $id_usulan_aktif = $this->Rekap_model->getIDUsulan()['id_usulan'];
 
-            // //simpan ke tabel rekap
+            //simpan ke tabel rekap
             $this->Rekap_model->addRekap($id_usulan_aktif, $nim, $skor_ipk, $skor_prestasi, $skor_ekonomi, $skor_pribadi, $this->total, $status);
         }
     }
