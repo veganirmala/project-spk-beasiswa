@@ -78,7 +78,7 @@
                         <th scope="col">SKOR PRESTASI</th>
                         <th scope="col">SKOR EKONOMI</th>
                         <th scope="col">SKOR TOTAL</th>
-                        <th scope="col">STATUS KELAYAKAN</th>
+                        <th scope="col">STATUS</th>
                         <th scope="col">RANKING</th>
                     </tr>
                 </thead>
