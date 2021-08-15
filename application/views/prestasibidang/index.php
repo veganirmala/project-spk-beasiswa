@@ -14,7 +14,7 @@
             <div class="card shadow mb-4">
                 <div class="card-header py-3">
                     <!-- <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6> -->
-                    <a href="<?= base_url('PrestasiBidang/bidang_tambah'); ?>" class="btn btn-primary" title="Tambah Data"><i class="fas fa-plus"></i> Tambah</a>
+                    <a href="<?= base_url('prestasibidang/bidang_tambah'); ?>" class="btn btn-primary" title="Tambah Data"><i class="fas fa-plus"></i> Tambah</a>
                     <?php echo $this->session->flashdata('message'); ?>
                 </div>
                 <div class="card-body">
@@ -47,9 +47,9 @@
                                         <td><?= $bdg['skor']; ?></td>
                                         <td><?= $bdg['status_bidang']; ?></td>
                                         <td>
-                                            <a href="<?= base_url(); ?>PrestasiBidang/bidang_view/<?= $bdg['id_bidang']; ?>" class="btn btn-success" title="Detail Data"><i class="fas fa-info-circle"></i></a>
-                                            <a href="<?= base_url(); ?>PrestasiBidang/bidang_edit/<?= $bdg['id_bidang']; ?>" class="btn btn-danger" title="Edit Data"><i class="fas fa-edit"></i></a>
-                                            <a href="<?= base_url(); ?>PrestasiBidang/bidang_delete/<?= $bdg['id_bidang']; ?>" class="btn btn-warning" title="Delete Data" onclick="return confirm('Apakah anda akan menghapus data ini?');"><i class="fas fa-trash-alt"></i></a>
+                                            <a href="<?= base_url(); ?>prestasibidang/bidang_view/<?= $bdg['id_bidang']; ?>" class="btn btn-success" title="Detail Data"><i class="fas fa-info-circle"></i></a>
+                                            <a href="<?= base_url(); ?>prestasibidang/bidang_edit/<?= $bdg['id_bidang']; ?>" class="btn btn-danger" title="Edit Data"><i class="fas fa-edit"></i></a>
+                                            <a href="<?= base_url(); ?>prestasibWidang/bidang_delete/<?= $bdg['id_bidang']; ?>" class="btn btn-warning" title="Delete Data" onclick="return confirm('Apakah anda akan menghapus data ini?');"><i class="fas fa-trash-alt"></i></a>
                                         </td>
                                     </tr>
                                     <?php $i++; ?>
