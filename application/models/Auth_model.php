@@ -37,7 +37,7 @@ class Auth_model extends CI_Model
         }
     }
 
-    public function registrasion()
+    public function registration()
     {
         //ambil inputan di form registration
         $email = $this->input->post('email', true);
