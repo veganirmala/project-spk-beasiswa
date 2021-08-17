@@ -25,22 +25,22 @@ class User_model extends CI_Model
         return $this->db->get_where('user', ['id_user' => $id])->row_array();
     }
 
-    public function addUser()
-    {
-        $email = $this->input->post('email', true);
-        $nama = $this->input->post('nama', true);
-        $jk_user = $this->input->post('jk_user', true);
-        $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
-        $tipe = $this->input->post('tipe', true);
-        $data = [
-            'email' => $email,
-            'nama' => $nama,
-            'jk_user' => $jk_user,
-            'password' => $password,
-            'tipe' => $tipe
-        ];
-        $this->db->insert('user', $data);
-    }
+    // public function addUser()
+    // {
+    //     $email = $this->input->post('email', true);
+    //     $nama = $this->input->post('nama', true);
+    //     $jk_user = $this->input->post('jk_user', true);
+    //     $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
+    //     $tipe = $this->input->post('tipe', true);
+    //     $data = [
+    //         'email' => $email,
+    //         'nama' => $nama,
+    //         'jk_user' => $jk_user,
+    //         'password' => $password,
+    //         'tipe' => $tipe
+    //     ];
+    //     $this->db->insert('user', $data);
+    // }
 
     public function updateUser()
     {
