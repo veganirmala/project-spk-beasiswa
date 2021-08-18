@@ -11,7 +11,7 @@
             <label for="tingkat">Tingkat<span style="color:red;">*</span></label>
             <select class="form-control" tabindex="-1" aria-hidden="true" name="tingkat">
                 <option value="<?= $bidang['tingkat']; ?>"><?= $bidang['tingkat']; ?></option>
-                <option value="Lokal">Lokal</option>
+                <option value="Kecamatan">Kecamatan</option>
                 <option value="Kabupaten">Kabupaten</option>
                 <option value="Provinsi">Provinsi</option>
                 <option value="Nasional">Nasional</option>
